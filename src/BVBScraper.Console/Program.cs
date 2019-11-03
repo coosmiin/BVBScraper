@@ -1,12 +1,16 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 
-namespace BVBScraper
+namespace BVBScraper.Console
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static async Task Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			var scraper = new StockScraper();
+			foreach (var stock in await scraper.ScrapeBETComposition())
+			{
+				System.Console.WriteLine($"{stock.Symbol} ({stock.Name}): {stock.Price} [{stock.Weight}]");
+			}
 		}
 	}
 }

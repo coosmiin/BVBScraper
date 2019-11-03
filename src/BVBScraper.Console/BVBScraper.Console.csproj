@@ -3,7 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>BVBScraper</RootNamespace>
+    <RootNamespace>BVBScraper.Console</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BVBScraper\BVBScraper.csproj" />
+  </ItemGroup>
 
 </Project>

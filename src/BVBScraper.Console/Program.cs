@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BVBScraper.Console
+namespace Trading.BVBScraper.Console
 {
 	class Program
 	{

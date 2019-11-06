@@ -1,4 +1,4 @@
-﻿namespace BVBScraper
+﻿namespace Trading.BVBScraper
 {
 	public class BETStock
 	{

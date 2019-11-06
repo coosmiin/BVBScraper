@@ -3,7 +3,7 @@ using AngleSharp.Html.Dom;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BVBScraper
+namespace Trading.BVBScraper
 {
 	public class StockScraper
 	{

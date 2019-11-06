@@ -3,7 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>BVBScraper.Console</RootNamespace>
+    <RootNamespace>Trading.BVBScraper.Console</RootNamespace>
+    <AssemblyName>Trading.BVBScraper.Console</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

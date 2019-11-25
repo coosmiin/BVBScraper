@@ -9,7 +9,7 @@ namespace Trading.BVBScraper.Console
 			var scraper = new StockScraper();
 			foreach (var stock in await scraper.ScrapeBETComposition())
 			{
-				System.Console.WriteLine($"{stock.Symbol} ({stock.Name}): {stock.Price} [{stock.Weight}]");
+				System.Console.WriteLine($"{stock.Symbol}\t: {stock.Price}\t [{stock.Weight}] ({stock.Name})");
 			}
 		}
 	}

@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Console", "BVBSc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper", "BVBScraper\BVBScraper.csproj", "{C2523B4C-BDC9-44A6-9829-4B202FB55A3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Math", "Investments.Math\Investments.Math.csproj", "{4D43E19B-9C8F-4E52-A640-21F90AC968E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Logic", "Investments.Logic\Investments.Logic.csproj", "{4D43E19B-9C8F-4E52-A640-21F90AC968E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain", "Investments.Domain\Investments.Domain.csproj", "{923DF077-940F-42F7-BAC1-AB9A2B9A897D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain.Tests", "Investments.Domain.Tests\Investments.Domain.Tests.csproj", "{911D170D-67AC-467B-91CB-8A1FCDB33885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investments.Math.Tests", "Investments.Math.Tests\Investments.Math.Tests.csproj", "{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investments.Logic.Tests", "Investments.Logic.Tests\Investments.Logic.Tests.csproj", "{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVBTrading.Console", "BVBTrading.Console\BVBTrading.Console.csproj", "{0605FAD4-13D9-4893-B4B7-BF2859100B71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

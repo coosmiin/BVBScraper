@@ -31,7 +31,7 @@ namespace Trading.BVBScraper
 					Symbol = row.Cells[0].QuerySelector("a").TextContent,
 					Name = row.Cells[1].TextContent,
 					Price = decimal.Parse(row.Cells[3].TextContent),
-					Weight = decimal.Parse(row.Cells[7].TextContent)
+					Weight = decimal.Parse(row.Cells[7].TextContent) / 100
 				});
 			}
 

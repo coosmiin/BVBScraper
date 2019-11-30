@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\BVBScraper.Console\BVBScraper.Console.csproj" />
+    <ProjectReference Include="..\Investments.Logic\Investments.Logic.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>Trading.BVBTrading.Console</RootNamespace>
+    <AssemblyName>Trading.BVBTrading.Console</AssemblyName>
+  </PropertyGroup>
+
+</Project>

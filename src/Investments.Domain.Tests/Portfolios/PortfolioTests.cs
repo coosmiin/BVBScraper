@@ -1,9 +1,10 @@
-﻿using Investments.Domain.Models;
+﻿using Investments.Domain.Portfolios;
+using Investments.Domain.Stocks;
 using Moq;
 using NUnit.Framework;
 using System.Linq;
 
-namespace Investments.Domain.Tests.Models
+namespace Investments.Domain.Tests.Portfolios
 {
 	public class PortfolioTests
 	{
@@ -33,10 +34,10 @@ namespace Investments.Domain.Tests.Models
 		public void TotalValue_NonEmptyPortfolio_IsCorrect()
 		{
 			var portfolio = new Portfolio(
-				new[] 
-				{ 
-					new Stock("TVL") { Price = 10, Count = 2, Weight = 49 }, 
-					new Stock("TVL") { Price = 3, Count = 7, Weight = 51 } 
+				new[]
+				{
+					new Stock("TVL") { Price = 10, Count = 2, Weight = 49 },
+					new Stock("TVL") { Price = 3, Count = 7, Weight = 51 }
 				});
 
 			Assert.AreEqual(41, portfolio.TotalValue);

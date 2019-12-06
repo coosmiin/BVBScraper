@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Investments.Domain.Models
+namespace Investments.Domain.Stocks
 {
 	public class Stock
 	{

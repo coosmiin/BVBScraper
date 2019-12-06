@@ -1,8 +1,8 @@
-﻿using Investments.Domain.Models;
+﻿using Investments.Domain.Stocks;
 using NUnit.Framework;
 using System;
 
-namespace Investments.Domain.Tests.Models
+namespace Investments.Domain.Tests.Stocks
 {
 	public class StockTests
 	{

@@ -19,21 +19,42 @@ namespace Investments.Logic.Portfolios
 		{
 			Validate();
 
-			var portfolio = new Portfolio(_stocks);
+			var initialPortfolio = GetInitialPortfolio();
 
-			_weightStrategy ??= new NoWeightAdjustmentStrategy();
-			_targetWeights = _weightStrategy.AdjustWeights(portfolio.StockWeights, _targetWeights, portfolio.TotalValue / _toBuyAmount);
+			RecalculateWeights(initialPortfolio);
 
-			var availableAmount = portfolio.TotalValue + _toBuyAmount;
-			foreach (var weight in _targetWeights.OrderByDescending(s => s.Value))
+			return  BuildPortfolio(initialPortfolio);
+
+			Portfolio GetInitialPortfolio()
 			{
-				var price = _stockPrices[weight.Key];
-				var count = (int)Math.Round(weight.Value * _toBuyAmount / price, 0);
+				// Update prices on existing stocks
+				foreach (var stock in _stocks ?? Enumerable.Empty<Stock>())
+				{
+					stock.Price = _stockPrices[stock.Symbol];
+				}
 
-				TryAddStock(portfolio, new Stock(weight.Key) { Count = count, Price = price }, availableAmount);
+				return new Portfolio(_stocks);
 			}
 
-			return portfolio;
+			void RecalculateWeights(Portfolio portfolio)
+			{
+				_weightStrategy ??= new NoWeightAdjustmentStrategy();
+				_targetWeights = _weightStrategy.AdjustWeights(portfolio.StockWeights, _targetWeights, portfolio.TotalValue / _toBuyAmount);
+			}
+
+			Portfolio BuildPortfolio(Portfolio portfolio)
+			{
+				var availableAmount = portfolio.TotalValue + _toBuyAmount;
+				foreach (var weight in _targetWeights.OrderByDescending(s => s.Value))
+				{
+					var price = _stockPrices[weight.Key];
+					var count = (int)Math.Round(weight.Value * _toBuyAmount / price, 0);
+
+					TryAddStock(portfolio, new Stock(weight.Key) { Count = count, Price = price }, availableAmount);
+				}
+
+				return portfolio;
+			}
 		}
 
 		public PortfolioBuilder UsePrices(StockPrices stockPrices)
@@ -91,7 +112,16 @@ namespace Investments.Logic.Portfolios
 				throw new ArgumentException($"Target weights cannot be higher than 100% ({_targetWeights.First(w => w.Value > 1).Key} weight: {_targetWeights.First(w => w.Value > 1)})");			
 
 			if (!MathHelper.IsApproxOne(_targetWeights.Sum(w => w.Value)))
-				throw new ArgumentException($"Sum of target weights has to be approx 100% ({_targetWeights.Sum(w => w.Value)})");			
+				throw new ArgumentException($"Sum of target weights has to be approx 100% ({_targetWeights.Sum(w => w.Value)})");
+
+			if (_stockPrices == null)
+				throw new ArgumentException("Cannot build portfolio without stock prices");
+
+			if (_targetWeights.Any(w => !_stockPrices.ContainsKey(w.Key)))
+				throw new ArgumentException($"There is at least one target symbol that doesn't have a price: `{_targetWeights.First(w => !_stockPrices.ContainsKey(w.Key)).Key}`");
+
+			if (_stocks?.Any(s => !_stockPrices.ContainsKey(s.Symbol)) == true)
+				throw new ArgumentException($"There is at least one stock that doesn't have equivalent price: `{_stocks.First(s => !_stockPrices.ContainsKey(s.Symbol)).Symbol}`");
 		}
 	}
 }

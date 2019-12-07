@@ -118,6 +118,42 @@ namespace Investments.Logic.Tests.Portfolios
 		}
 
 		[Test]
+		public void BuildPortfolio_MissingPriceForTargetSymbol_ThrowsArgumentException()
+		{
+			var prices = new StockPrices
+			{ { "TLV", 10 }, { "FP", 20 }, { "EL", 30 } };
+
+			var targetWeights = new StockWeights
+			{ { "TLV", 0.21m }, { "FP", 0.3m } };
+
+			var builder = new PortfolioBuilder()
+				.UsePrices(prices)
+				.UseTargetWeights(targetWeights)
+				.UseToBuyAmount(100);
+
+			Assert.Throws<ArgumentException>(() => builder.Build());
+		}
+
+		[Test]
+		public void BuildPortfolio_MissingPriceForInitialStock_ThrowsArgumentException()
+		{
+			var prices = new StockPrices
+			{ { "TLV", 10 }, { "FP", 20 }, { "EL", 30 } };
+
+			var targetWeights = new StockWeights
+			{ { "TLV", 0.21m }, { "FP", 0.3m }, { "EL", 0.5m }  };
+
+			var builder = new PortfolioBuilder()
+				.UseStocks(new[] { new Stock("SNG") } )
+				.UsePrices(prices)
+				.UseTargetWeights(targetWeights)
+				.UseToBuyAmount(100);
+
+			Assert.Throws<ArgumentException>(() => builder.Build());
+		}
+
+
+		[Test]
 		public void BuildPortfolio_InitialStocks_EnoughAvailableAmount_NewStocksAreAdded()
 		{
 			var prices = new StockPrices

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Investments.Domain.Stocks;
+using Investments.Domain.Stocks.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Investments.Domain.Models
+namespace Investments.Domain.Portfolios
 {
 	public class Portfolio : IEnumerable<Stock>
 	{
@@ -11,6 +13,8 @@ namespace Investments.Domain.Models
 		private bool _staleWeights = true;
 
 		public decimal TotalValue => _stocks.Sum(s => s.Count * s.Price);
+
+		public StockWeights StockWeights => _stocks.ToDictionary(s => s.Symbol, s => s.Weight).AsStockWeights();
 
 		public Portfolio()
 		{

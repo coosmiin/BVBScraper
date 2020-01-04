@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain", "Inves
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain.Tests", "Investments.Domain.Tests\Investments.Domain.Tests.csproj", "{911D170D-67AC-467B-91CB-8A1FCDB33885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investments.Logic.Tests", "Investments.Logic.Tests\Investments.Logic.Tests.csproj", "{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Logic.Tests", "Investments.Logic.Tests\Investments.Logic.Tests.csproj", "{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVBTrading.Console", "BVBTrading.Console\BVBTrading.Console.csproj", "{0605FAD4-13D9-4893-B4B7-BF2859100B71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBTrading.Console", "BVBTrading.Console\BVBTrading.Console.csproj", "{0605FAD4-13D9-4893-B4B7-BF2859100B71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTTrading.Automation", "..\..\BTTradeAutomation\src\BTTrading.Automation\BTTrading.Automation.csproj", "{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

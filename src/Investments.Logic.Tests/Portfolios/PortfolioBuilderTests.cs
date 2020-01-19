@@ -3,6 +3,7 @@ using Investments.Logic.Portfolios;
 using Investments.Logic.Weights;
 using NUnit.Framework;
 using System;
+using System.Linq;
 
 namespace Investments.Logic.Tests.Portfolios
 {
@@ -152,7 +153,6 @@ namespace Investments.Logic.Tests.Portfolios
 			Assert.Throws<ArgumentException>(() => builder.Build());
 		}
 
-
 		[Test]
 		public void BuildPortfolio_InitialStocks_EnoughAvailableAmount_NewStocksAreAdded()
 		{
@@ -182,6 +182,25 @@ namespace Investments.Logic.Tests.Portfolios
 			Assert.AreEqual(4, portfolio["TLV"].Count);
 
 			Assert.AreEqual(240, portfolio.TotalValue);
+		}
+
+		[Test]
+		public void BuildPortfolio_MinOrderValueIsSet_StockTotalValueLessThanMinimal_StockIsNotAddedToPortfolio()
+		{
+			var prices = new StockPrices
+			{ { "TLV", 10 }, { "FP", 20 }, { "EL", 30 } };
+
+			var targetWeights = new StockWeights
+			{ { "TLV", 0.2m }, { "FP", 0.3m }, { "EL", 0.5m }  };
+
+			var portfolio = new PortfolioBuilder()
+				.UsePrices(prices)
+				.UseTargetWeights(targetWeights)
+				.UseToBuyAmount(140)
+				.UseMinOrderValue(31)
+				.Build();
+
+			Assert.IsFalse(portfolio.Any(s => s.Symbol == "TLV"));
 		}
 	}
 }

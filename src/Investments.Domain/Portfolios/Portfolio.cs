@@ -14,7 +14,7 @@ namespace Investments.Domain.Portfolios
 
 		public decimal TotalValue => _stocks.Sum(s => s.Count * s.Price);
 
-		public StockWeights StockWeights => _stocks.ToDictionary(s => s.Symbol, s => s.Weight).AsStockWeights();
+		public StockWeights StockWeights => _stocks.AsStockWeights();
 
 		public Portfolio()
 		{
@@ -24,6 +24,8 @@ namespace Investments.Domain.Portfolios
 		public Portfolio(Stock[] stocks)
 		{
 			_stocks = stocks?.ToList() ?? Enumerable.Empty<Stock>().ToList();
+
+			RecalculateWeightsIfStale();
 		}
 
 		public Stock this[string symbol]
@@ -82,7 +84,7 @@ namespace Investments.Domain.Portfolios
 		{
 			var totalValue = TotalValue;
 
-			foreach (var stock in this)
+			foreach (var stock in _stocks)
 			{
 				stock.Weight = Math.Round(stock.Count * stock.Price / totalValue, 2);
 			}

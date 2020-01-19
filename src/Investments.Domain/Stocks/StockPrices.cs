@@ -8,8 +8,8 @@ namespace Investments.Domain.Stocks
 		{
 		}
 
-		public StockPrices(IDictionary<string, decimal> weights)
-			: base(weights)
+		public StockPrices(IDictionary<string, decimal> prices)
+			: base(prices)
 		{
 		}
 	}

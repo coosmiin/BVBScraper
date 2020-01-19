@@ -14,6 +14,7 @@ namespace Investments.Logic.Portfolios
 		private StockWeights _targetWeights;
 		private Stock[] _stocks;
 		private decimal _toBuyAmount;
+		private int _minOrderValue;
 
 		public Portfolio Build()
 		{
@@ -87,9 +88,18 @@ namespace Investments.Logic.Portfolios
 			return this;
 		}
 
+		public PortfolioBuilder UseMinOrderValue(int value)
+		{
+			_minOrderValue = value;
+			return this;
+		}
+
 		private void TryAddStock(Portfolio portfolio, Stock stock, decimal availableAmount)
 		{
 			if (stock.Count == 0)
+				return;
+
+			if (stock.TotalValue < _minOrderValue)
 				return;
 
 			var currentAvailableAmount = availableAmount - portfolio.TotalValue - stock.TotalValue;

@@ -39,7 +39,7 @@ namespace BVBTrading.Console
 
 			stocks = stocks.UpdatePrices(stockPrices);
 
-			var toBuyAmount = 2198.93m;
+			var toBuyAmount = 2180.93m;
 			decimal currentPortfolioValue = stocks.Sum(s => s.TotalValue);
 
 			var strategy = 
@@ -66,10 +66,15 @@ namespace BVBTrading.Console
 
 			System.Console.WriteLine("-------------------------------------");
 
-			foreach (var stock in portfolio.DeriveAdditionalPortfolio(stocks))
+			var newPortfolio = portfolio.DeriveAdditionalPortfolio(stocks);
+			foreach (var stock in newPortfolio)
 			{
 				System.Console.WriteLine($"{stock.Symbol} ({stock.Price})\t {stock.Count}\t ({stock.Count * stock.Price})\t {stock.Weight} ({targetWeights[stock.Symbol]})");
 			}
+
+			System.Console.WriteLine("-------------------------------------");
+
+			System.Console.WriteLine($"Invested sum: {newPortfolio.Sum(s => s.Count * s.Price)}");
 		}
 	}
 }

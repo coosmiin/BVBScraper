@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBTrading.Console", "BVBTr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTTrading.Automation", "..\..\BTTradeAutomation\src\BTTrading.Automation\BTTrading.Automation.csproj", "{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Functions", "BVBScraper.Functions\BVBScraper.Functions.csproj", "{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BVBScraper", "BVBScraper", "{8E434E80-8E7F-4818-8346-438E9A8DBFE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,9 +61,18 @@ Global
 		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B97EE0F0-CF34-4972-A746-4FCE67145FF7} = {8E434E80-8E7F-4818-8346-438E9A8DBFE5}
+		{C2523B4C-BDC9-44A6-9829-4B202FB55A3F} = {8E434E80-8E7F-4818-8346-438E9A8DBFE5}
+		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0} = {8E434E80-8E7F-4818-8346-438E9A8DBFE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59B558C9-3FE8-40E3-B67D-301EFFB0E2AC}

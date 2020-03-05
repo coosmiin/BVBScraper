@@ -1,0 +1,14 @@
+[
+	{
+		"symbol": "FP",
+		"name": "FONDUL PROPRIETATEA",
+		"price": 1.3450,
+		"weight": 0.2305
+	},
+	{
+		"symbol": "TLV",
+		"name": "BANCA TRANSILVANIA S.A.",
+		"price": 2.5050,
+		"weight": 0.1968
+	}
+]

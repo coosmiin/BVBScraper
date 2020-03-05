@@ -1,10 +1,13 @@
 ﻿using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Investments.Advisor.Providers;
+using Investments.Advisor.Trading;
 using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
 using Investments.Logic.Portfolios;
 using Investments.Logic.Weights;
-using Trading.BVBScraper;
+using SecretStore;
 
 namespace BVBTrading.Console
 {
@@ -14,14 +17,18 @@ namespace BVBTrading.Console
 
 		static async Task Main(string[] args)
 		{
-			var scraper = new StockScraper();
-			var betStocks = await scraper.ScrapeBETComposition();
+			var secretStore = new LocalSecretStore<Program>();
 
-			var stockPrices = betStocks.ToDictionary(s => s.Symbol, s => s.Price).AsStockPrices();
-			var targetWeights = betStocks.ToDictionary(s => s.Symbol, s => s.Weight).AsStockWeights();
+			var repository = new AzureFuncBVBDataProvider(new HttpClient(), secretStore.GetSecret("Azure:TradingFuncKey"));
+			var orchestrator = new TradeSessionOrchestrator(repository);
+
+			var betStocks = await orchestrator.GetBETStocksAsync();
+
+			var stockPrices = betStocks.AsStockPrices();
+			var targetWeights = betStocks.AsStockWeights();
 
 			var stocks = new[]
-{
+			{
 				new Stock("TLV") { Count = 313 },
 				new Stock("FP") { Count = 665 },
 				new Stock("SNP") { Count = 1668 },
@@ -39,7 +46,7 @@ namespace BVBTrading.Console
 
 			stocks = stocks.UpdatePrices(stockPrices);
 
-			var toBuyAmount = 2198.93m;
+			var toBuyAmount = 2180.93m;
 			decimal currentPortfolioValue = stocks.Sum(s => s.TotalValue);
 
 			var strategy = 
@@ -66,10 +73,15 @@ namespace BVBTrading.Console
 
 			System.Console.WriteLine("-------------------------------------");
 
-			foreach (var stock in portfolio.DeriveAdditionalPortfolio(stocks))
+			var newPortfolio = portfolio.DeriveAdditionalPortfolio(stocks);
+			foreach (var stock in newPortfolio)
 			{
 				System.Console.WriteLine($"{stock.Symbol} ({stock.Price})\t {stock.Count}\t ({stock.Count * stock.Price})\t {stock.Weight} ({targetWeights[stock.Symbol]})");
 			}
+
+			System.Console.WriteLine("-------------------------------------");
+
+			System.Console.WriteLine($"Invested sum: {newPortfolio.Sum(s => s.Count * s.Price)}");
 		}
 	}
 }

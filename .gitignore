@@ -5,3 +5,6 @@
 **/src/.vs
 **/src/*/obj
 **/src/*/bin
+**/src/*/local.settings.json
+**/src/**/*.user
+**/src/**/PublishProfiles

@@ -29,7 +29,7 @@ namespace BVBScraper.Functions
 			catch (Exception ex)
 			{
 				log.LogError(ex.Message);
-				return null;
+				throw;
 			}
 		}
 	}

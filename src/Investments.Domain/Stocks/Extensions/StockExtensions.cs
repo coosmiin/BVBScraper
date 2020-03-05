@@ -26,9 +26,14 @@ namespace Investments.Domain.Stocks.Extensions
 			return new StockWeights(stocks.ToDictionary(s => s.Symbol, s => s.Weight));
 		}
 
-		public static StockPrices AsStockPrices(this IDictionary<string, decimal> prices)
+		public static StockWeights AsStockWeights(this Stock[] stocks)
 		{
-			return new StockPrices(prices);
+			return new StockWeights(stocks.ToDictionary(s => s.Symbol, s => s.Weight));
+		}
+
+		public static StockPrices AsStockPrices(this Stock[] stocks)
+		{
+			return new StockPrices(stocks.ToDictionary(s => s.Symbol, s => s.Price));
 		}
 
 		public static Stock[] UpdatePrices(this Stock[] stocks, StockPrices prices)

@@ -1,15 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\BVBScraper.Console\BVBScraper.Console.csproj" />
-    <ProjectReference Include="..\Investments.Logic\Investments.Logic.csproj" />
-  </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>coosm-c23d27a4-eb88</UserSecretsId>
     <RootNamespace>Trading.BVBTrading.Console</RootNamespace>
     <AssemblyName>Trading.BVBTrading.Console</AssemblyName>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.2" />
+    <PackageReference Include="SecretStore" Version="1.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Investments.Advisor\Investments.Advisor.csproj" />
+    <ProjectReference Include="..\Investments.Logic\Investments.Logic.csproj" />
+  </ItemGroup>
 
 </Project>

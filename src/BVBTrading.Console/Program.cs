@@ -20,6 +20,7 @@ namespace BVBTrading.Console
 			var secretStore = new LocalSecretStore<Program>();
 
 			var repository = new AzureFuncBVBDataProvider(new HttpClient(), secretStore.GetSecret("Azure:TradingFuncKey"));
+			// var repository = new StaticDataBVBDataProvider();
 			var orchestrator = new TradeSessionOrchestrator(repository);
 
 			var betStocks = await orchestrator.GetBETStocksAsync();
@@ -29,11 +30,12 @@ namespace BVBTrading.Console
 
 			var stocks = new[]
 			{
-				new Stock("TLV") { Count = 313 },
-				new Stock("FP") { Count = 665 },
-				new Stock("SNP") { Count = 1668 },
+				new Stock("TLV") { Count = 492 },
+				new Stock("FP") { Count = 1081 },
+				new Stock("SNP") { Count = 2676 },
 				new Stock("SNG") { Count = 12 },
 				new Stock("BRD") { Count = 28 },
+				new Stock("TGN") { Count = 1 },
 				new Stock("EL") { Count = 14 },
 				new Stock("DIGI") { Count = 4 },
 				new Stock("SNN") { Count = 6 },
@@ -46,12 +48,12 @@ namespace BVBTrading.Console
 
 			stocks = stocks.UpdatePrices(stockPrices);
 
-			var toBuyAmount = 2180.93m;
+			var toBuyAmount = 2393.13m;
 			decimal currentPortfolioValue = stocks.Sum(s => s.TotalValue);
 
 			var strategy = 
 				new MinOrderValueCutOffStrategy(
-					new FollowTargetAdjustmentStrategy(), MIN_ORDER_VALUE / currentPortfolioValue);
+					new FollowTargetAdjustmentStrategy(), MIN_ORDER_VALUE / toBuyAmount);
 
 			var portfolio = new PortfolioBuilder()
 				.UseStocks(stocks)

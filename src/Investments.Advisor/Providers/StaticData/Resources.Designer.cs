@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Investments.Advisor.Tests.Properties {
+namespace Investments.Advisor.Providers.StaticData {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Investments.Advisor.Tests.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Investments.Advisor.Tests.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Investments.Advisor.Providers.StaticData.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -65,42 +65,36 @@ namespace Investments.Advisor.Tests.Properties {
         ///	{
         ///		&quot;symbol&quot;: &quot;FP&quot;,
         ///		&quot;name&quot;: &quot;FONDUL PROPRIETATEA&quot;,
-        ///		&quot;price&quot;: 1.3450,
-        ///		&quot;weight&quot;: 0.2305
+        ///		&quot;price&quot;: 1.3400,
+        ///		&quot;weight&quot;: 0.2374
         ///	},
         ///	{
         ///		&quot;symbol&quot;: &quot;TLV&quot;,
         ///		&quot;name&quot;: &quot;BANCA TRANSILVANIA S.A.&quot;,
-        ///		&quot;price&quot;: 2.5050,
-        ///		&quot;weight&quot;: 0.1968
-        ///	}
-        ///].
-        /// </summary>
-        internal static string bvb_index {
-            get {
-                return ResourceManager.GetString("bvb_index", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to [
-        ///	{
-        ///		&quot;Symbol&quot;: &quot;SFG&quot;,
-        ///		&quot;Name&quot;: &quot;Sphera Franchise Group&quot;,
-        ///		&quot;Price&quot;: 18.9000,
-        ///		&quot;Weight&quot;: 0.0054
+        ///		&quot;price&quot;: 2.4250,
+        ///		&quot;weight&quot;: 0.197
         ///	},
         ///	{
-        ///		&quot;Symbol&quot;: &quot;BVB&quot;,
-        ///		&quot;Name&quot;: &quot;BURSA DE VALORI BUCURESTI SA&quot;,
-        ///		&quot;Price&quot;: 23.4000,
-        ///		&quot;Weight&quot;: 0.0047
-        ///	}
-        ///].
+        ///		&quot;symbol&quot;: &quot;SNP&quot;,
+        ///		&quot;name&quot;: &quot;OMV PETROM S.A.&quot;,
+        ///		&quot;price&quot;: 0.3790,
+        ///		&quot;weight&quot;: 0.1647
+        ///	},
+        ///	{
+        ///		&quot;symbol&quot;: &quot;BRD&quot;,
+        ///		&quot;name&quot;: &quot;BRD - GROUPE SOCIETE GENERALE S.A.&quot;,
+        ///		&quot;price&quot;: 14.8800,
+        ///		&quot;weight&quot;: 0.1061
+        ///	},
+        ///	{
+        ///		&quot;symbol&quot;: &quot;SNG&quot;,
+        ///		&quot;name&quot;: &quot;S.N.G.N. ROMGAZ S.A.&quot;,
+        ///		&quot;price&quot;: 33.6500,
+        ///		&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string bvb_index_pascal_case {
+        internal static string bet_index {
             get {
-                return ResourceManager.GetString("bvb_index_pascal_case", resourceCulture);
+                return ResourceManager.GetString("bet_index", resourceCulture);
             }
         }
     }

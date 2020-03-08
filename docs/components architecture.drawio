@@ -1,4 +1,4 @@
-<mxfile modified="2020-03-08T09:07:09.670Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36" etag="5mu9kv3V_hFopWrVC8Ew" version="12.8.1" type="github">
+<mxfile modified="2020-03-08T09:13:26.609Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36" etag="eJcDBraHQ8GR1H5q1pTm" version="12.8.1" type="github">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
     <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -144,6 +144,9 @@
         </mxCell>
         <mxCell id="Ciq0yB8opKBCNrTVTSC3-63" value="BT Automation" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Functions.svg;imageBackground=#CCFFCC;noLabel=0;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
           <mxGeometry x="830" y="354" width="50" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciq0yB8opKBCNrTVTSC3-68" value="TODO: Add order signing and order validation related components" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="510" y="490" width="150" height="110" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

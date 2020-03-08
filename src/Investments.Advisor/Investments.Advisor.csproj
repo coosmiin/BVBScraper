@@ -13,5 +13,20 @@
     <ProjectReference Include="..\Investments.Domain\Investments.Domain.csproj" />
     <ProjectReference Include="..\Investments.Utils\Investments.Utils.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Providers\StaticData\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Providers\StaticData\Resources.resx">
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
   
 </Project>

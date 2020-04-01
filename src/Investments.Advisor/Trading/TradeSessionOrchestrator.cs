@@ -6,16 +6,16 @@ namespace Investments.Advisor.Trading
 {
 	public class TradeSessionOrchestrator : ITradeSessionOrchestrator
 	{
-		private readonly IBVBDataProvider _bvbRepository;
+		private readonly IBVBDataProvider _bvbDataProvider;
 
-		public TradeSessionOrchestrator(IBVBDataProvider bvbRepository)
+		public TradeSessionOrchestrator(IBVBDataProvider bvbDataProvider)
 		{
-			_bvbRepository = bvbRepository;
+			_bvbDataProvider = bvbDataProvider;
 		}
 
 		public async Task<Stock[]> GetBETStocksAsync()
 		{
-			return await _bvbRepository.GetBETStocksAsync();
+			return await _bvbDataProvider.GetBETStocksAsync();
 		}
 	}
 }

@@ -9,7 +9,7 @@ using Investments.Logic.Portfolios;
 using Investments.Logic.Weights;
 using SecretStore;
 
-namespace BVBTrading.Console
+namespace Trading.Console
 {
 	class Program
 	{
@@ -19,7 +19,7 @@ namespace BVBTrading.Console
 		{
 			var secretStore = new LocalSecretStore<Program>();
 
-			var repository = new AzureFuncBVBDataProvider(new HttpClient(), secretStore.GetSecret("Azure:TradingFuncKey"));
+			var repository = new AzureFuncBVBDataProvider(new HttpClient(), secretStore.GetSecret("Azure-TradeOrchestrationFuncKey"));
 			// var repository = new StaticDataBVBDataProvider();
 			var orchestrator = new TradeSessionOrchestrator(repository);
 
@@ -51,7 +51,7 @@ namespace BVBTrading.Console
 			var toBuyAmount = 2393.13m;
 			decimal currentPortfolioValue = stocks.Sum(s => s.TotalValue);
 
-			var strategy = 
+			var strategy =
 				new MinOrderValueCutOffStrategy(
 					new FollowTargetAdjustmentStrategy(), MIN_ORDER_VALUE / toBuyAmount);
 

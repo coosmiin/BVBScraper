@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Console", "BVBScraper.Console\BVBScraper.Console.csproj", "{B97EE0F0-CF34-4972-A746-4FCE67145FF7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper", "BVBScraper\BVBScraper.csproj", "{C2523B4C-BDC9-44A6-9829-4B202FB55A3F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Logic", "Investments.Logic\Investments.Logic.csproj", "{4D43E19B-9C8F-4E52-A640-21F90AC968E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain", "Investments.Domain\Investments.Domain.csproj", "{923DF077-940F-42F7-BAC1-AB9A2B9A897D}"
@@ -15,19 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Logic.Tests", "Investments.Logic.Tests\Investments.Logic.Tests.csproj", "{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBTrading.Console", "BVBTrading.Console\BVBTrading.Console.csproj", "{0605FAD4-13D9-4893-B4B7-BF2859100B71}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTTrading.Automation", "..\..\BTTradeAutomation\src\BTTrading.Automation\BTTrading.Automation.csproj", "{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Functions", "BVBScraper.Functions\BVBScraper.Functions.csproj", "{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BVBScraper", "BVBScraper", "{8E434E80-8E7F-4818-8346-438E9A8DBFE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Console", "Trading.Console\Trading.Console.csproj", "{0605FAD4-13D9-4893-B4B7-BF2859100B71}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Advisor", "Investments.Advisor\Investments.Advisor.csproj", "{C601E1CD-7A5F-4471-BFAF-DEDC05886344}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investments.Advisor.Tests", "Investments.Advisor.Tests\Investments.Advisor.Tests.csproj", "{B6C236B3-D216-477B-9FD1-8D7D788FF5D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Advisor.Tests", "Investments.Advisor.Tests\Investments.Advisor.Tests.csproj", "{B6C236B3-D216-477B-9FD1-8D7D788FF5D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investments.Utils", "Investments.Utils\Investments.Utils.csproj", "{8BEF03EE-9854-44F7-B925-CC8E2605A25A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Utils", "Investments.Utils\Investments.Utils.csproj", "{8BEF03EE-9854-44F7-B925-CC8E2605A25A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper", "BVBScraper\BVBScraper.csproj", "{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Console", "BVBScraper.Console\BVBScraper.Console.csproj", "{565B4B4F-19D0-4D81-AD11-0420957C62A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Functions", "Trading.Functions\Trading.Functions.csproj", "{7184B34A-BB4B-4A72-B7F7-03F26194587D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B97EE0F0-CF34-4972-A746-4FCE67145FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B97EE0F0-CF34-4972-A746-4FCE67145FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B97EE0F0-CF34-4972-A746-4FCE67145FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B97EE0F0-CF34-4972-A746-4FCE67145FF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2523B4C-BDC9-44A6-9829-4B202FB55A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2523B4C-BDC9-44A6-9829-4B202FB55A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2523B4C-BDC9-44A6-9829-4B202FB55A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2523B4C-BDC9-44A6-9829-4B202FB55A3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D43E19B-9C8F-4E52-A640-21F90AC968E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D43E19B-9C8F-4E52-A640-21F90AC968E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D43E19B-9C8F-4E52-A640-21F90AC968E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,14 +51,6 @@ Global
 		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEE339DE-2B18-47DD-922D-A7FAC2F9D597}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C601E1CD-7A5F-4471-BFAF-DEDC05886344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C601E1CD-7A5F-4471-BFAF-DEDC05886344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C601E1CD-7A5F-4471-BFAF-DEDC05886344}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,14 +63,21 @@ Global
 		{8BEF03EE-9854-44F7-B925-CC8E2605A25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BEF03EE-9854-44F7-B925-CC8E2605A25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BEF03EE-9854-44F7-B925-CC8E2605A25A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B97EE0F0-CF34-4972-A746-4FCE67145FF7} = {8E434E80-8E7F-4818-8346-438E9A8DBFE5}
-		{C2523B4C-BDC9-44A6-9829-4B202FB55A3F} = {8E434E80-8E7F-4818-8346-438E9A8DBFE5}
-		{B0108E68-F5B6-4877-9354-1DAA9D19E3E0} = {8E434E80-8E7F-4818-8346-438E9A8DBFE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59B558C9-3FE8-40E3-B67D-301EFFB0E2AC}

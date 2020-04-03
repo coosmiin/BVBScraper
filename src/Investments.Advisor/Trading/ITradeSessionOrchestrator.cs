@@ -5,6 +5,8 @@ namespace Investments.Advisor.Trading
 {
 	public interface ITradeSessionOrchestrator
 	{
-		Task<Stock[]> GetBETStocksAsync();
+		Task Run();
+
+		Task<Stock[]> GetToBuyStocks();
 	}
 }

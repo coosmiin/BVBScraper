@@ -4,7 +4,7 @@ namespace Investments.Domain.Stocks
 {
 	public class Stock
 	{
-		public string Symbol { get; }
+		public string Symbol { get; set; }
 
 		public int Count { get; set; }
 
@@ -13,6 +13,10 @@ namespace Investments.Domain.Stocks
 		public decimal Weight { get; set; }
 
 		public decimal TotalValue => Count * Price;
+
+		public Stock()
+		{
+		}
 
 		public Stock(string symbol)
 		{

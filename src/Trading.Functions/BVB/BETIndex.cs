@@ -8,13 +8,13 @@ using Microsoft.Extensions.Logging;
 using Trading.BVBScraper;
 using System.Linq;
 
-namespace BVBScraper.Functions
+namespace Trading.Functions.BVB
 {
 	public static class BETIndex
 	{
 		[FunctionName("ScrapeBETIndex")]
 		public static async Task<IActionResult> Run(
-			[HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+			[HttpTrigger(AuthorizationLevel.Function, "get", Route = "scrapeBETIndex")] HttpRequest req,
 			ILogger log)
 		{
 			try

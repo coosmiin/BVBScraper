@@ -4,8 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>coosm-c23d27a4-eb88</UserSecretsId>
-    <RootNamespace>Trading.BVBTrading.Console</RootNamespace>
-    <AssemblyName>Trading.BVBTrading.Console</AssemblyName>
+    <RootNamespace>Trading.Console</RootNamespace>
+    <AssemblyName>Trading.Console</AssemblyName>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

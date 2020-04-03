@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper", "BVBScraper\BV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Console", "BVBScraper.Console\BVBScraper.Console.csproj", "{565B4B4F-19D0-4D81-AD11-0420957C62A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trading.Functions", "Trading.Functions\Trading.Functions.csproj", "{7184B34A-BB4B-4A72-B7F7-03F26194587D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Functions", "Trading.Functions\Trading.Functions.csproj", "{7184B34A-BB4B-4A72-B7F7-03F26194587D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

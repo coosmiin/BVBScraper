@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Trading.BVBScraper;
 using System.Linq;
 
-namespace Trading.Functions
+namespace Trading.Functions.BVB
 {
 	public static class BETIndex
 	{

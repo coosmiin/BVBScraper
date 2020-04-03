@@ -6,11 +6,11 @@ namespace Investments.Logic.Portfolios
 {
 	public static class PortfolioExtensions
 	{
-		public static Portfolio DeriveAdditionalPortfolio(this Portfolio portfolio, Stock[] stocks)
+		public static Stock[] DeriveToBuyStocks(this Portfolio portfolio, Stock[] stocks)
 		{
 			var initialStocks = stocks.ToDictionary(s => s.Symbol);
 
-			return new Portfolio(portfolio.Select(s => s - SafeGetStock(s.Symbol)).Where(s => s.Count > 0).ToArray());
+			return portfolio.Select(s => s - SafeGetStock(s.Symbol)).Where(s => s.Count > 0).ToArray();
 
 			Stock SafeGetStock(string symbol)
 			{

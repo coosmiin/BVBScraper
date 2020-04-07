@@ -1,5 +1,5 @@
-﻿using Investments.Advisor.Exceptions;
-using Investments.Advisor.Providers;
+﻿using Investments.Advisor.AzureProxies;
+using Investments.Advisor.Exceptions;
 using Investments.Advisor.Tests.Properties;
 using Moq;
 using Moq.Protected;
@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Investments.Advisor.Tests.Providers
 {
-	public class AzureFuncBVBDataProviderTests
+	public class AzureBVBDataProviderProxyTests
 	{
 		[Test]
 		public async Task GetBETStocksAsync_ValidResponse_StocksAreCorrect()
 		{
 			var httpClient = BuildHttpClient(Resources.bvb_index);
 
-			var provider = new AzureFuncBVBDataProvider(httpClient, string.Empty);
+			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
 
 			var result = await provider.GetBETStocksAsync();
 
@@ -33,7 +33,7 @@ namespace Investments.Advisor.Tests.Providers
 		{
 			var httpClient = BuildHttpClient(Resources.bvb_index_pascal_case);
 
-			var provider = new AzureFuncBVBDataProvider(httpClient, string.Empty);
+			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
 
 			Assert.ThrowsAsync<InvalidBETDataException>(async () => await provider.GetBETStocksAsync());
 		}
@@ -43,7 +43,7 @@ namespace Investments.Advisor.Tests.Providers
 		{
 			var httpClient = BuildHttpClient("[]");
 
-			var provider = new AzureFuncBVBDataProvider(httpClient, string.Empty);
+			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
 
 			Assert.ThrowsAsync<InvalidBETDataException>(async () => await provider.GetBETStocksAsync());
 		}

@@ -1,22 +1,22 @@
 ﻿using Investments.Advisor.Exceptions;
 using Investments.Advisor.Models;
+using Investments.Advisor.Providers;
 using Investments.Domain.Stocks;
 using Investments.Utils.Serialization;
-using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Investments.Advisor.Providers
+namespace Investments.Advisor.AzureProxies
 {
-	public class AzureFuncBVBDataProvider : IBVBDataProvider
+	public class AzureBVBDataProviderProxy : IBVBDataProvider
 	{
 		private const string FUNCTION_URI_FORMAT = "https://tradeorchestration.azurewebsites.net/api/scrapeBETIndex?code={0}";
 
 		private readonly HttpClient _httpClient;
 		private readonly string _functionUri;
 
-		public AzureFuncBVBDataProvider(HttpClient httpClient, string functionKey)
+		public AzureBVBDataProviderProxy(HttpClient httpClient, string functionKey)
 		{
 			_httpClient = httpClient;
 			_functionUri = string.Format(FUNCTION_URI_FORMAT, functionKey);

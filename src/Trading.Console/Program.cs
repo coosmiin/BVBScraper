@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Investments.Advisor.AzureProxies;
 using Investments.Advisor.Providers;
 using Investments.Advisor.Trading;
 using SecretStore;
@@ -15,14 +16,15 @@ namespace Trading.Console
 
 			var azureFuncKey = secretStore.GetSecret("Azure-TradeOrchestrationFuncKey");
 
-			var bvbDataProvider = new AzureFuncBVBDataProvider(new HttpClient(), azureFuncKey);
+			var bvbDataProvider = new AzureBVBDataProviderProxy(new HttpClient(), azureFuncKey);
 			// var bvbDataProvider = new StaticDataBVBDataProvider();
-			var tradeAdvisor = new AzureFuncTradeAdvisor(new HttpClient(), azureFuncKey);
-			var orchestrator = new TradeSessionOrchestrator(bvbDataProvider, tradeAdvisor);
+			var tradeAdvisor = new AzureTradeAdvisorProxy(new HttpClient(), azureFuncKey);
+			var tradeAutomation = new AzureTradeAutomationProxy(new HttpClient(), azureFuncKey);
+			var orchestrator = new TradeSessionOrchestrator(bvbDataProvider, tradeAutomation, tradeAdvisor);
 
 			// await orchestrator.Run();
 
-			var toBuyStocks = await orchestrator.GetToBuyStocks();
+			var toBuyStocks = await orchestrator.GetToBuyStocks(2393.13m);
 
 			foreach (var stock in toBuyStocks)
 			{

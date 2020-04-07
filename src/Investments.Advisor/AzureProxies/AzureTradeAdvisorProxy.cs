@@ -1,20 +1,21 @@
-﻿using Investments.Domain.Stocks;
+﻿using Investments.Advisor.Trading;
+using Investments.Domain.Stocks;
 using Investments.Utils.Serialization;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Investments.Advisor.Providers
+namespace Investments.Advisor.AzureProxies
 {
-	public class AzureFuncTradeAdvisor : ITradeAdvisor
+	public class AzureTradeAdvisorProxy : ITradeAdvisor
 	{
 		private const string FUNCTION_URI_FORMAT = "https://tradeorchestration.azurewebsites.net/api/calculateToBuyStocks?code={0}";
 
 		private readonly HttpClient _httpClient;
 		private readonly string _functionUri;
 
-		public AzureFuncTradeAdvisor(HttpClient httpClient, string functionKey)
+		public AzureTradeAdvisorProxy(HttpClient httpClient, string functionKey)
 		{
 			_httpClient = httpClient;
 			_functionUri = string.Format(FUNCTION_URI_FORMAT, functionKey);
@@ -29,9 +30,9 @@ namespace Investments.Advisor.Providers
 				BETStocks = betStocks
 			};
 
-			var result = 
+			var result =
 				await _httpClient.PostAsync(
-					_functionUri, 
+					_functionUri,
 					new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json"));
 
 			return JsonSerializerHelper.Deserialize<Stock[]>(await result.Content.ReadAsStringAsync());

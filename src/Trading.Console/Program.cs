@@ -14,17 +14,19 @@ namespace Trading.Console
 		{
 			var secretStore = new LocalSecretStore<Program>();
 
-			var azureFuncKey = secretStore.GetSecret("Azure-TradeOrchestrationFuncKey");
+			var azureOrchestrationFuncKey = secretStore.GetSecret("Azure-TradeOrchestrationFuncKey");
+			var azureAutomationFuncKey = secretStore.GetSecret("Azure-TradeAutomationFuncKey");
 
-			var bvbDataProvider = new AzureBVBDataProviderProxy(new HttpClient(), azureFuncKey);
+
+			var bvbDataProvider = new AzureBVBDataProviderProxy(new HttpClient(), azureOrchestrationFuncKey);
 			// var bvbDataProvider = new StaticDataBVBDataProvider();
-			var tradeAdvisor = new AzureTradeAdvisorProxy(new HttpClient(), azureFuncKey);
-			var tradeAutomation = new AzureTradeAutomationProxy(new HttpClient(), azureFuncKey);
+			var tradeAdvisor = new AzureTradeAdvisorProxy(new HttpClient(), azureOrchestrationFuncKey);
+			var tradeAutomation = new AzureTradeAutomationProxy(new HttpClient(), azureAutomationFuncKey);
 			var orchestrator = new TradeSessionOrchestrator(bvbDataProvider, tradeAutomation, tradeAdvisor);
 
 			// await orchestrator.Run();
 
-			var toBuyStocks = await orchestrator.GetToBuyStocks(2393.13m);
+			var toBuyStocks = await orchestrator.GetToBuyStocks(2000m); // 0.85 * [available amount] - to overcome order value estimation risk
 
 			foreach (var stock in toBuyStocks)
 			{

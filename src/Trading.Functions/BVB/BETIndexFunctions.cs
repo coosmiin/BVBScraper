@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Trading.Functions.BVB
 {
-	public static class BETIndex
+	public static class BETIndexFunctions
 	{
 		[FunctionName("ScrapeBETIndex")]
 		public static async Task<IActionResult> Run(

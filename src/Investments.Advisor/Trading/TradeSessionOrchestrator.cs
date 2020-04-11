@@ -8,61 +8,31 @@ namespace Investments.Advisor.Trading
 	public class TradeSessionOrchestrator : ITradeSessionOrchestrator
 	{
 		private readonly IBVBDataProvider _bvbDataProvider;
+		private readonly ITradeAutomation _tradeAutomation;
 		private readonly ITradeAdvisor _tradeAdvisor;
 
-		public TradeSessionOrchestrator(IBVBDataProvider bvbDataProvider, ITradeAdvisor tradeAdvisor)
+		public TradeSessionOrchestrator(IBVBDataProvider bvbDataProvider, ITradeAutomation tradeAutomation, ITradeAdvisor tradeAdvisor)
 		{
 			_bvbDataProvider = bvbDataProvider;
+			_tradeAutomation = tradeAutomation;
 			_tradeAdvisor = tradeAdvisor;
 		}
 
 		[Obsolete("To be removed when trade automation func is in place")]
-		public async Task<Stock[]> GetToBuyStocks()
+		public async Task<Stock[]> GetToBuyStocks(decimal toBuyAmount)
 		{
 			var betStocks = await _bvbDataProvider.GetBETStocksAsync();
 
-			var existingStocks = new[]
-{
-				new Stock("TLV") { Count = 492 },
-				new Stock("FP") { Count = 1081 },
-				new Stock("SNP") { Count = 2676 },
-				new Stock("SNG") { Count = 12 },
-				new Stock("BRD") { Count = 28 },
-				new Stock("TGN") { Count = 1 },
-				new Stock("EL") { Count = 14 },
-				new Stock("DIGI") { Count = 4 },
-				new Stock("SNN") { Count = 6 },
-				new Stock("TEL") { Count = 2 },
-				new Stock("ALR") { Count = 21 },
-				new Stock("M") { Count = 2 },
-				new Stock("WINE") { Count = 2 },
-				new Stock("SFG") { Count = 2 }
-			};
+			var existingStocks = await _tradeAutomation.GetPortfolio();
 
-			return await _tradeAdvisor.CalculateToBuyStocksAsync(2393.13m, existingStocks, betStocks);
+			return await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, betStocks);
 		}
 
 		public async Task Run()
 		{
 			var betStocks = await _bvbDataProvider.GetBETStocksAsync();
 
-			var existingStocks = new[]
-{
-				new Stock("TLV") { Count = 492 },
-				new Stock("FP") { Count = 1081 },
-				new Stock("SNP") { Count = 2676 },
-				new Stock("SNG") { Count = 12 },
-				new Stock("BRD") { Count = 28 },
-				new Stock("TGN") { Count = 1 },
-				new Stock("EL") { Count = 14 },
-				new Stock("DIGI") { Count = 4 },
-				new Stock("SNN") { Count = 6 },
-				new Stock("TEL") { Count = 2 },
-				new Stock("ALR") { Count = 21 },
-				new Stock("M") { Count = 2 },
-				new Stock("WINE") { Count = 2 },
-				new Stock("SFG") { Count = 2 }
-			};
+			var existingStocks = await _tradeAutomation.GetPortfolio();
 
 			var toBuyStocks = await _tradeAdvisor.CalculateToBuyStocksAsync(2393.13m, existingStocks, betStocks);
 		}

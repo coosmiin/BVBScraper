@@ -1,7 +1,7 @@
 ﻿using Investments.Domain.Stocks;
 using System.Threading.Tasks;
 
-namespace Investments.Advisor.Providers
+namespace Investments.Advisor.Trading
 {
 	public interface ITradeAdvisor
 	{

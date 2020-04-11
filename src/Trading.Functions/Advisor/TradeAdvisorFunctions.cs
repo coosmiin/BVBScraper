@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Trading.Functions.Advisor
 {
-	public static class TradeAdvisor
+	public static class TradeAdvisorFunctions
 	{
 		private const int MIN_ORDER_VALUE = 250;
 

@@ -6,6 +6,11 @@ namespace Investments.Domain.Stocks.Extensions
 {
 	public static class StockExtensions
 	{
+		public static Stock[] AsStocks(this IDictionary<string, int> stockCounts)
+		{
+			return stockCounts.Select(s => new Stock(s.Key) { Count = s.Value }).ToArray();
+		}
+
 		public static StockWeights AsStockWeights(this IDictionary<string, decimal> weights)
 		{
 			return new StockWeights(weights);

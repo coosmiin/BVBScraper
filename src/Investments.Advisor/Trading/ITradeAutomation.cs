@@ -3,10 +3,8 @@ using System.Threading.Tasks;
 
 namespace Investments.Advisor.Trading
 {
-	public interface ITradeSessionOrchestrator
+	public interface ITradeAutomation
 	{
-		Task Run();
-
-		Task<Stock[]> GetToBuyStocks(decimal toBuyAmount);
+		Task<Stock[]> GetPortfolio();
 	}
 }

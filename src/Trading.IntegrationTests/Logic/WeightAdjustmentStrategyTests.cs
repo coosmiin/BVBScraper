@@ -1,6 +1,11 @@
+using Investments.Domain.Portfolios;
 using Investments.Domain.Stocks;
+using Investments.Domain.Stocks.Extensions;
 using Investments.Logic.Weights;
+using Investments.Utils.Serialization;
 using NUnit.Framework;
+using System.Collections.Generic;
+using Trading.IntegrationTests.Properties;
 
 namespace Trading.IntegrationTests.Logic
 {
@@ -11,21 +16,17 @@ namespace Trading.IntegrationTests.Logic
 		{
 			var strategy = new FollowTargetAdjustmentStrategy();
 
-			var currentWeights = new StockWeights
-			{
-				{ "TLV", 0.2m }, 
-				{ "FP", 0.2m }, 
-				{ "EL", 0.6m } 
-			};
+			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(Resources.bvb_index);
+			var existingStocks = JsonSerializerHelper.Deserialize<Dictionary<string, int>>(Resources.portfolio).AsStocks();
 
-			var targetWeights = new StockWeights
-			{
-				{ "TLV", 0.2m },
-				{ "FP", 0.3m }, 
-				{ "EL", 0.5m }
-			};
+			existingStocks = existingStocks.UpdatePrices(bvbStocks.AsStockPrices());
 
-			currentWeights = strategy.AdjustWeights(currentWeights, targetWeights, 0 / 2000);
+			var currentPortfolio = new Portfolio(existingStocks);
+
+			var currentWeights = currentPortfolio.AsStockWeights();
+			var targetWeights = bvbStocks.AsStockWeights();
+
+			var adjustedWeights = strategy.AdjustWeights(currentWeights, targetWeights, currentPortfolio.TotalValue / 2000);
 		}
 	}
 }

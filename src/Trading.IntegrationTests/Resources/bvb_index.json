@@ -1,0 +1,104 @@
+[
+	{
+		"symbol": "TLV",
+		"name": "BANCA TRANSILVANIA S.A.",
+		"price": 1.8960,
+		"weight": 0.1915
+	},
+	{
+		"symbol": "FP",
+		"name": "FONDUL PROPRIETATEA",
+		"price": 1.1450,
+		"weight": 0.1879
+	},
+	{
+		"symbol": "SNP",
+		"name": "OMV PETROM S.A.",
+		"price": 0.3210,
+		"weight": 0.1749
+	},
+	{
+		"symbol": "BRD",
+		"name": "BRD - GROUPE SOCIETE GENERALE S.A.",
+		"price": 11.5800,
+		"weight": 0.1035
+	},
+	{
+		"symbol": "SNG",
+		"name": "S.N.G.N. ROMGAZ S.A.",
+		"price": 29.0000,
+		"weight": 0.1075
+	},
+	{
+		"symbol": "TGN",
+		"name": "S.N.T.G.N. TRANSGAZ S.A.",
+		"price": 258.0000,
+		"weight": 0.0487
+	},
+	{
+		"symbol": "EL",
+		"name": "SOCIETATEA ENERGETICA ELECTRICA S.A.",
+		"price": 9.8000,
+		"weight": 0.0435
+	},
+	{
+		"symbol": "DIGI",
+		"name": "Digi Communications N.V.",
+		"price": 30.8000,
+		"weight": 0.0395
+	},
+	{
+		"symbol": "SNN",
+		"name": "S.N. NUCLEARELECTRICA S.A.",
+		"price": 15.0000,
+		"weight": 0.029
+	},
+	{
+		"symbol": "TEL",
+		"name": "C.N.T.E.E. TRANSELECTRICA",
+		"price": 16.8000,
+		"weight": 0.0158
+	},
+	{
+		"symbol": "M",
+		"name": "MedLife S.A.",
+		"price": 29.8000,
+		"weight": 0.0127
+	},
+	{
+		"symbol": "ALR",
+		"name": "ALRO S.A.",
+		"price": 1.4800,
+		"weight": 0.0102
+	},
+	{
+		"symbol": "WINE",
+		"name": "PURCARI WINERIES PUBLIC COMPANY LIMITED",
+		"price": 19.1000,
+		"weight": 0.0098
+	},
+	{
+		"symbol": "COTE",
+		"name": "CONPET SA",
+		"price": 73.8000,
+		"weight": 0.0082
+	},
+	{
+		"symbol": "BVB",
+		"name": "BURSA DE VALORI BUCURESTI SA",
+		"price": 23.5000,
+		"weight": 0.0061
+	},
+	{
+		"symbol": "TRP",
+		"name": "TERAPLAST SA",
+		"price": 0.2700,
+		"weight": 0.0058
+	},
+	{
+		"symbol": "SFG",
+		"name": "Sphera Franchise Group",
+		"price": 14.8500,
+		"weight": 0.0055
+	}
+]

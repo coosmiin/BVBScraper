@@ -1,6 +1,8 @@
 ﻿using Investments.Domain.Stocks;
+using Investments.Logic.Calculus;
 using Investments.Logic.Weights;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Investments.Logic.Tests.Weights
 {
@@ -24,7 +26,7 @@ namespace Investments.Logic.Tests.Weights
 		}
 
 		[Test]
-		public void AdjustWeights_InverseToBuyRatioHigherThanOne_ToBuyWeightsCorrectlyCalculated()
+		public void AdjustWeights_InverseToBuyRatioVeryHigh_ToBuyWeightsSumEqualsOneIsCorrecltyEnforced()
 		{
 			var currentWeights = new StockWeights
 			{ { "TLV", 0.2m }, { "FP", 0.2m }, { "EL", 0.6m } };
@@ -33,11 +35,9 @@ namespace Investments.Logic.Tests.Weights
 			{ { "TLV", 0.2m }, { "FP", 0.3m }, { "EL", 0.5m } };
 
 			var strategy = new FollowTargetAdjustmentStrategy();
-			var toBuyWeights = strategy.AdjustWeights(currentWeights, targetWeights, toBuyInverseRatio: 2);
+			var toBuyWeights = strategy.AdjustWeights(currentWeights, targetWeights, toBuyInverseRatio: 10);
 
-			Assert.AreEqual(0.2m, toBuyWeights["TLV"]);
-			Assert.AreEqual(0.5m, toBuyWeights["FP"]);
-			Assert.AreEqual(0.3m, toBuyWeights["EL"]);
+			Assert.IsTrue(toBuyWeights.Sum(w => w.Value).IsApproxOne());
 		}
 
 		[Test]

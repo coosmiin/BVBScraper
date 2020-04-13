@@ -11,22 +11,43 @@ namespace Trading.IntegrationTests.Logic
 {
 	public class WeightAdjustmentStrategyTests
 	{
+		private const int MIN_ORDER_VALUE = 250;
+
 		[Test]
 		public void FollowTargetAdjustmentStrategy_AsExpected()
 		{
+			var toBuyAmount = 2000m;
+			var (currentPortfolio, targetWeights) = ReadDataResources();
+
 			var strategy = new FollowTargetAdjustmentStrategy();
 
+			var adjustedWeights = 
+				strategy.AdjustWeights(currentPortfolio.AsStockWeights(), targetWeights, currentPortfolio.TotalValue / toBuyAmount);
+		}
+
+		[Test]
+		public void MinOrderValueCutOffStrategy_AsExpected()
+		{
+			var toBuyAmount = 2000m;
+			var (currentPortfolio, targetWeights) = ReadDataResources();
+
+			var strategy = new MinOrderValueCutOffStrategy(new FollowTargetAdjustmentStrategy(), MIN_ORDER_VALUE / toBuyAmount);
+
+			var adjustedWeights =
+				strategy.AdjustWeights(currentPortfolio.AsStockWeights(), targetWeights, currentPortfolio.TotalValue / toBuyAmount);
+		}
+
+		private (Portfolio currentPortfolio, StockWeights targetWeights) ReadDataResources()
+		{
 			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(Resources.bvb_index);
 			var existingStocks = JsonSerializerHelper.Deserialize<Dictionary<string, int>>(Resources.portfolio).AsStocks();
 
 			existingStocks = existingStocks.UpdatePrices(bvbStocks.AsStockPrices());
 
 			var currentPortfolio = new Portfolio(existingStocks);
-
-			var currentWeights = currentPortfolio.AsStockWeights();
 			var targetWeights = bvbStocks.AsStockWeights();
 
-			var adjustedWeights = strategy.AdjustWeights(currentWeights, targetWeights, currentPortfolio.TotalValue / 2000);
+			return (currentPortfolio, targetWeights);
 		}
 	}
 }

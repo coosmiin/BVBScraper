@@ -1,10 +1,12 @@
 using Investments.Domain.Portfolios;
 using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
+using Investments.Logic.Calculus;
 using Investments.Logic.Weights;
 using Investments.Utils.Serialization;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Trading.IntegrationTests.Properties;
 
 namespace Trading.IntegrationTests.Logic
@@ -23,6 +25,8 @@ namespace Trading.IntegrationTests.Logic
 
 			var adjustedWeights = 
 				strategy.AdjustWeights(currentPortfolio.AsStockWeights(), targetWeights, currentPortfolio.TotalValue / toBuyAmount);
+
+			Assert.IsTrue(adjustedWeights.Sum(w => w.Value).IsApproxOne());
 		}
 
 		[Test]
@@ -35,6 +39,8 @@ namespace Trading.IntegrationTests.Logic
 
 			var adjustedWeights =
 				strategy.AdjustWeights(currentPortfolio.AsStockWeights(), targetWeights, currentPortfolio.TotalValue / toBuyAmount);
+
+			Assert.IsTrue(adjustedWeights.Sum(w => w.Value).IsApproxOne());
 		}
 
 		private (Portfolio currentPortfolio, StockWeights targetWeights) ReadDataResources()

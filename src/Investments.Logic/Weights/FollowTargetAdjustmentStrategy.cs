@@ -1,5 +1,6 @@
 ﻿using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
+using Investments.Logic.Calculus;
 using System.Linq;
 
 namespace Investments.Logic.Weights
@@ -19,15 +20,13 @@ namespace Investments.Logic.Weights
 			// With first constraint that bn >= 0 which results in: cn <= tn * (1 + B / C)
 			// With second constraint that b1 + b2 + ... + bn = 1
 
-			// Apply the first contraint and remove the target weights that don't fulfill it
+			// Apply the first constraint and remove the target weights that don't fulfill it
 			var allowedWeights = targetWeights
 				.Where(w => SafeGetCurrentWeight(w.Key) <= w.Value * (1 + 1 / toBuyInverseRatio))
 				.AsStockWeights();
 
-			decimal toRedistributedWeight = targetWeights.Sum(w => w.Value) - allowedWeights.Sum(w => w.Value);
-
 			// Redistribute the removed weights to the other weights
-			allowedWeights = allowedWeights.Select(w => (w.Key, w.Value * (1 + toRedistributedWeight))).AsStockWeights();
+			allowedWeights = allowedWeights.Redistribute();
 
 			var toBuyWeights = allowedWeights
 				.Select(w => (w.Key, w.Value * (toBuyInverseRatio + 1) - SafeGetCurrentWeight(w.Key) * toBuyInverseRatio))

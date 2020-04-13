@@ -20,8 +20,8 @@ namespace Investments.Logic.Tests.Weights
 
 			Assert.IsFalse(toBuyWeights.ContainsKey("TLV"));
 			Assert.IsFalse(toBuyWeights.ContainsKey("SNG"));
-			Assert.AreEqual(0.24m, toBuyWeights["FP"]);
-			Assert.AreEqual(0.72m, toBuyWeights["EL"]);
+			Assert.AreEqual(0.25m, toBuyWeights["FP"]);
+			Assert.AreEqual(0.75m, toBuyWeights["EL"]);
 		}
 	}
 }

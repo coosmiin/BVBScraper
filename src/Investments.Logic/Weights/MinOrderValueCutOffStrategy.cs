@@ -1,5 +1,6 @@
 ﻿using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
+using Investments.Logic.Calculus;
 using System;
 using System.Linq;
 
@@ -28,11 +29,8 @@ namespace Investments.Logic.Weights
 			// Cut off those that are too small
 			targetWeights = adjustedWeights.Where(w => w.Value > _minWeight).AsStockWeights();
 
-			// Calculate total weight to be redistributed
-			decimal cutOffTotalWeight = adjustedWeights.Where(w => w.Value <= _minWeight).Sum(w => w.Value);
-
 			// Redistributes deleted weights
-			targetWeights = targetWeights.Select(w => (w.Key, w.Value * (1 + cutOffTotalWeight))).AsStockWeights();
+			targetWeights = targetWeights.Redistribute();
 
 			return targetWeights;
 		}

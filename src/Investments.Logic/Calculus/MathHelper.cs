@@ -8,7 +8,7 @@ namespace Investments.Logic.Calculus
 	{
 		public static bool IsApproxOne(this decimal value)
 		{
-			return value > 0.9m && value < 1.1m; 
+			return value > 0.9m && value < 1.1m;
 		}
 
 		public static StockWeights Redistribute(this StockWeights weights)

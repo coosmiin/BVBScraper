@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Console", "BVBSc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Functions", "Trading.Functions\Trading.Functions.csproj", "{7184B34A-BB4B-4A72-B7F7-03F26194587D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trading.IntegrationTests", "Trading.IntegrationTests\Trading.IntegrationTests.csproj", "{C8894926-C651-461C-8F48-92598559EBCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8894926-C651-461C-8F48-92598559EBCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8894926-C651-461C-8F48-92598559EBCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8894926-C651-461C-8F48-92598559EBCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8894926-C651-461C-8F48-92598559EBCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

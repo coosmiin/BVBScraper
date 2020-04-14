@@ -65,31 +65,31 @@ namespace Trading.IntegrationTests.Properties {
         ///	{
         ///		&quot;symbol&quot;: &quot;TLV&quot;,
         ///		&quot;name&quot;: &quot;BANCA TRANSILVANIA S.A.&quot;,
-        ///		&quot;price&quot;: 2.0650,
-        ///		&quot;weight&quot;: 0.1998
+        ///		&quot;price&quot;: 1.8960,
+        ///		&quot;weight&quot;: 0.1915
         ///	},
         ///	{
         ///		&quot;symbol&quot;: &quot;FP&quot;,
         ///		&quot;name&quot;: &quot;FONDUL PROPRIETATEA&quot;,
-        ///		&quot;price&quot;: 1.1800,
-        ///		&quot;weight&quot;: 0.1855
+        ///		&quot;price&quot;: 1.1450,
+        ///		&quot;weight&quot;: 0.1879
         ///	},
         ///	{
         ///		&quot;symbol&quot;: &quot;SNP&quot;,
         ///		&quot;name&quot;: &quot;OMV PETROM S.A.&quot;,
-        ///		&quot;price&quot;: 0.3285,
-        ///		&quot;weight&quot;: 0.1715
+        ///		&quot;price&quot;: 0.3210,
+        ///		&quot;weight&quot;: 0.1749
         ///	},
         ///	{
         ///		&quot;symbol&quot;: &quot;BRD&quot;,
         ///		&quot;name&quot;: &quot;BRD - GROUPE SOCIETE GENERALE S.A.&quot;,
-        ///		&quot;price&quot;: 12.4000,
-        ///		&quot;weight&quot;: 0.1062
+        ///		&quot;price&quot;: 11.5800,
+        ///		&quot;weight&quot;: 0.1035
         ///	},
         ///	{
         ///		&quot;symbol&quot;: &quot;SNG&quot;,
         ///		&quot;name&quot;: &quot;S.N.G.N. ROMGAZ S.A.&quot;,
-        ///		&quot;price&quot;: 29.7000,
+        ///		&quot;price&quot;: 29.0000,
         ///		 [rest of string was truncated]&quot;;.
         /// </summary>
         public static string bvb_index {
@@ -100,7 +100,20 @@ namespace Trading.IntegrationTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	
+        ///	&quot;ALR&quot;: 21,
+        ///	&quot;BRD&quot;: 62,
+        ///	&quot;DIGI&quot;: 4,
+        ///	&quot;EL&quot;: 14,
+        ///	&quot;FP&quot;: 1461,
+        ///	&quot;M&quot;: 2,
+        ///	&quot;SFG&quot;: 2,
+        ///	&quot;SNG&quot;: 25,
+        ///	&quot;SNN&quot;: 6,
+        ///	&quot;SNP&quot;: 3559,
+        ///	&quot;TEL&quot;: 2,
+        ///	&quot;TGN&quot;: 1,
+        ///	&quot;TLV&quot;: 677,
+        ///	&quot;WINE&quot;: 2
         ///}.
         /// </summary>
         public static string portfolio {

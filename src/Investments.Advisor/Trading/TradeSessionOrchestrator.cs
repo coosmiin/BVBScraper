@@ -19,22 +19,25 @@ namespace Investments.Advisor.Trading
 		}
 
 		[Obsolete("To be removed when trade automation func is in place")]
-		public async Task<Stock[]> GetToBuyStocks(decimal toBuyAmount)
+		public async Task<Stock[]> GetToBuyStocks()
 		{
 			var betStocks = await _bvbDataProvider.GetBETStocksAsync();
 
-			var existingStocks = await _tradeAutomation.GetPortfolio();
+			var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
-			return await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, betStocks);
+			return await _tradeAdvisor.CalculateToBuyStocksAsync(availableAmount, existingStocks, betStocks);
 		}
 
 		public async Task Run()
 		{
 			var betStocks = await _bvbDataProvider.GetBETStocksAsync();
 
-			var existingStocks = await _tradeAutomation.GetPortfolio();
+			var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
-			var toBuyStocks = await _tradeAdvisor.CalculateToBuyStocksAsync(2393.13m, existingStocks, betStocks);
+			availableAmount *= 0.85m; // to overcome order value estimation risk
+
+			var toBuyStocks = 
+				await _tradeAdvisor.CalculateToBuyStocksAsync(availableAmount, existingStocks, betStocks);
 		}
 	}
 }

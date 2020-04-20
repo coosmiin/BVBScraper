@@ -5,6 +5,6 @@ namespace Investments.Advisor.Trading
 {
 	public interface ITradeAutomation
 	{
-		Task<Stock[]> GetPortfolio();
+		Task<(Stock[] Stocks, decimal AvailableAmount)> GetPortfolio();
 	}
 }

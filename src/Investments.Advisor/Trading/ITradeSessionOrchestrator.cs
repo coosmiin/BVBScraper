@@ -7,6 +7,6 @@ namespace Investments.Advisor.Trading
 	{
 		Task Run();
 
-		Task<Stock[]> GetToBuyStocks(decimal toBuyAmount);
+		Task<Stock[]> GetToBuyStocks();
 	}
 }

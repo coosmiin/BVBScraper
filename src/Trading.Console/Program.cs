@@ -26,7 +26,7 @@ namespace Trading.Console
 
 			// await orchestrator.Run();
 
-			var toBuyStocks = await orchestrator.GetToBuyStocks(2000m); // 0.85 * [available amount] - to overcome order value estimation risk
+			var toBuyStocks = await orchestrator.GetToBuyStocks();
 
 			foreach (var stock in toBuyStocks)
 			{

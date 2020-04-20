@@ -21,11 +21,20 @@ namespace Investments.Advisor.AzureProxies
 			_functionUri = string.Format(FUNCTION_URI_FORMAT, functionKey);
 		}
 
-		public async Task<Stock[]> GetPortfolio()
+		public async Task<(Stock[], decimal)> GetPortfolio()
 		{
 			var result = await _httpClient.GetStringAsync(_functionUri);
 
-			return JsonSerializerHelper.Deserialize<Dictionary<string, int>>(result).AsStocks();
+			var currentPortfolio = JsonSerializerHelper.Deserialize<TradePortfolio>(result);
+
+			return (currentPortfolio.ExistingStocks.AsStocks(), currentPortfolio.AvailableAmount);
+		}
+
+		private class TradePortfolio
+		{
+			public IDictionary<string, int> ExistingStocks { get; set; } = new Dictionary<string, int>();
+
+			public decimal AvailableAmount { get; set; }
 		}
 	}
 }

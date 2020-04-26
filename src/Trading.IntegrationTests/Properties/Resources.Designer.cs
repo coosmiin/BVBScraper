@@ -92,9 +92,9 @@ namespace Trading.IntegrationTests.Properties {
         ///		&quot;price&quot;: 29.0000,
         ///		 [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string bvb_index {
+        public static string bet_index {
             get {
-                return ResourceManager.GetString("bvb_index", resourceCulture);
+                return ResourceManager.GetString("bet_index", resourceCulture);
             }
         }
         

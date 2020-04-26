@@ -11,7 +11,7 @@ namespace Investments.Advisor.AzureProxies
 {
 	public class AzureBVBDataProviderProxy : IBVBDataProvider
 	{
-		private const string FUNCTION_URI_FORMAT = "https://tradeorchestration.azurewebsites.net/api/scrapeBETIndex?code={0}";
+		private const string FUNCTION_URI_FORMAT = "api/scrapeBETIndex?code={0}";
 
 		private readonly HttpClient _httpClient;
 		private readonly string _functionUri;

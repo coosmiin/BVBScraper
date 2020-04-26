@@ -13,8 +13,8 @@ namespace Trading.Functions.Advisor
 	{
 		private const int MIN_ORDER_VALUE = 250;
 
-		[FunctionName("CalculateToBuyStocks")]
-		public static IActionResult Run(
+		[FunctionName(nameof(CalculateToBuyStocks))]
+		public static IActionResult CalculateToBuyStocks(
 			[HttpTrigger(AuthorizationLevel.Function, "post", Route = "calculateToBuyStocks")] AdvisorRequest request,
 			ILogger log)
 		{

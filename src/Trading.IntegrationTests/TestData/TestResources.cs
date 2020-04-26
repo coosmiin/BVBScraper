@@ -18,7 +18,7 @@ namespace Trading.IntegrationTests.TestData
 
 		internal static (Stock[] currentStocks, Stock[] bvbStocks, decimal portfolioValue) ReadStocks()
 		{
-			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(Resources.bvb_index);
+			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(Resources.bet_index);
 			var currentStocks = JsonSerializerHelper.Deserialize<Dictionary<string, int>>(Resources.portfolio).AsStocks();
 
 			currentStocks = currentStocks.UpdatePrices(bvbStocks.AsStockPrices());

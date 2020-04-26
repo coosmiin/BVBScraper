@@ -10,7 +10,7 @@ namespace Investments.Advisor.AzureProxies
 {
 	public class AzureTradeAdvisorProxy : ITradeAdvisor
 	{
-		private const string FUNCTION_URI_FORMAT = "https://tradeorchestration.azurewebsites.net/api/calculateToBuyStocks?code={0}";
+		private const string FUNCTION_URI_FORMAT = "api/calculateToBuyStocks?code={0}";
 
 		private readonly HttpClient _httpClient;
 		private readonly string _functionUri;

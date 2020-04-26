@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -12,25 +11,14 @@ namespace Trading.Functions.BVB
 {
 	public static class BETIndexFunctions
 	{
-		[FunctionName("ScrapeBETIndex")]
-		public static async Task<IActionResult> Run(
-			[HttpTrigger(AuthorizationLevel.Function, "get", Route = "scrapeBETIndex")] HttpRequest req,
-			ILogger log)
+		[FunctionName(nameof(ScrapeBETIndex))]
+		public static async Task<IActionResult> ScrapeBETIndex(
+			[HttpTrigger(AuthorizationLevel.Function, "get", Route = "scrapeBETIndex")] HttpRequest request)
 		{
-			try
-			{
-				var scraper = new StockScraper();
-				var stocks = (await scraper.ScrapeBETComposition()).ToArray();
+			var scraper = new StockScraper();
+			var stocks = (await scraper.ScrapeBETComposition()).ToArray();
 
-				log.LogInformation($"Scraped BET BVB Index: {stocks.Count()} stocks");
-
-				return new OkObjectResult(stocks);
-			}
-			catch (Exception ex)
-			{
-				log.LogError(ex.Message);
-				throw;
-			}
+			return new OkObjectResult(stocks);
 		}
 	}
 }

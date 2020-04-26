@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Domain.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Logic.Tests", "Investments.Logic.Tests\Investments.Logic.Tests.csproj", "{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Console", "Trading.Console\Trading.Console.csproj", "{0605FAD4-13D9-4893-B4B7-BF2859100B71}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Advisor", "Investments.Advisor\Investments.Advisor.csproj", "{C601E1CD-7A5F-4471-BFAF-DEDC05886344}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Advisor.Tests", "Investments.Advisor.Tests\Investments.Advisor.Tests.csproj", "{B6C236B3-D216-477B-9FD1-8D7D788FF5D7}"
@@ -21,11 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Utils", "Invest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper", "BVBScraper\BVBScraper.csproj", "{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BVBScraper.Console", "BVBScraper.Console\BVBScraper.Console.csproj", "{565B4B4F-19D0-4D81-AD11-0420957C62A6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Functions", "Trading.Functions\Trading.Functions.csproj", "{7184B34A-BB4B-4A72-B7F7-03F26194587D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trading.IntegrationTests", "Trading.IntegrationTests\Trading.IntegrationTests.csproj", "{C8894926-C651-461C-8F48-92598559EBCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.IntegrationTests", "Trading.IntegrationTests\Trading.IntegrationTests.csproj", "{C8894926-C651-461C-8F48-92598559EBCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +45,6 @@ Global
 		{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A68BA7F-DD2C-476E-9BB2-0597D1812C6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0605FAD4-13D9-4893-B4B7-BF2859100B71}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C601E1CD-7A5F-4471-BFAF-DEDC05886344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C601E1CD-7A5F-4471-BFAF-DEDC05886344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C601E1CD-7A5F-4471-BFAF-DEDC05886344}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,10 +61,6 @@ Global
 		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{565B4B4F-19D0-4D81-AD11-0420957C62A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7184B34A-BB4B-4A72-B7F7-03F26194587D}.Release|Any CPU.ActiveCfg = Release|Any CPU

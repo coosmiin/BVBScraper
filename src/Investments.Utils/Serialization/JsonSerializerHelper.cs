@@ -15,5 +15,10 @@ namespace Investments.Utils.Serialization
 		{
 			return JsonSerializer.Deserialize<T>(json, _serializerOptions);
 		}
+
+		public static string Serialize<T>(T obj)
+		{
+			return JsonSerializer.Serialize<T>(obj, _serializerOptions);
+		}
 	}
 }

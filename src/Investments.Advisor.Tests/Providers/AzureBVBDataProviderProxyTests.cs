@@ -4,6 +4,7 @@ using Investments.Advisor.Tests.Properties;
 using Moq;
 using Moq.Protected;
 using NUnit.Framework;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -60,7 +61,10 @@ namespace Investments.Advisor.Tests.Providers
 					Content = new StringContent(testData)
 				});
 
-			return new HttpClient(httpMessageHandlerMock.Object);
+			var httpClient = new HttpClient(httpMessageHandlerMock.Object);
+			httpClient.BaseAddress = new Uri("http://localhost");
+
+			return httpClient;
 		}
 	}
 }

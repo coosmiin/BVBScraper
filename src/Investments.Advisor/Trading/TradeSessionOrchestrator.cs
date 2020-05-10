@@ -39,10 +39,10 @@ namespace Investments.Advisor.Trading
 
 			var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
-			var toBuyAmount = availableAmount * 0.80m; // to overcome order value estimation risk
+			var toBuyAmount = availableAmount * 0.75m; // to overcome order value estimation risk
 
 			_logger.LogInformation(
-				"Retrieved current Portfolio: ({availableAmount} * 0.85 = {toBuyAmount}) {currentStocks}", 
+				"Retrieved current Portfolio: ({availableAmount} * 0.75 = {toBuyAmount}) {currentStocks}", 
 				availableAmount, 
 				toBuyAmount,
 				JsonSerializerHelper.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));

@@ -23,7 +23,7 @@ namespace Trading.Functions.Orchestrator
 		}
 
 		[FunctionName(nameof(TriggerTradingSession))]
-		public async void TriggerTradingSession([TimerTrigger("0 0 12 9 * *")] TimerInfo timer, ILogger logger)
+		public async void TriggerTradingSession([TimerTrigger("0 0 12 8 * *")] TimerInfo timer, ILogger logger)
 		{
 			if (timer.IsPastDue)
 			{

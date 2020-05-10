@@ -1,5 +1,6 @@
 ﻿using Investments.Advisor.Providers;
 using Investments.Domain.Trading;
+using Investments.Utils.Serialization;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Text.Json;
@@ -33,25 +34,25 @@ namespace Investments.Advisor.Trading
 			var betStocks = await _bvbDataProvider.GetBETStocksAsync();
 
 			_logger.LogInformation(
-				"Retrieved BET: {betStocks}", 
-				JsonSerializer.Serialize(betStocks.Select(s => new { s.Symbol, s.Price, s.Weight}).ToArray()));
+				"Retrieved BET: {betStocks}",
+				JsonSerializerHelper.Serialize(betStocks.Select(s => new { s.Symbol, s.Price, s.Weight}).ToArray()));
 
 			var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
-			var toBuyAmount = availableAmount * 0.85m; // to overcome order value estimation risk
+			var toBuyAmount = availableAmount * 0.80m; // to overcome order value estimation risk
 
 			_logger.LogInformation(
 				"Retrieved current Portfolio: ({availableAmount} * 0.85 = {toBuyAmount}) {currentStocks}", 
 				availableAmount, 
 				toBuyAmount,
-				JsonSerializer.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));
+				JsonSerializerHelper.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));
 
 			var toBuyStocks = 
 				await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, betStocks);
 
 			_logger.LogInformation(
 				"Calculated to buy stocks: {toBuyStocks}",
-				JsonSerializer.Serialize(
+				JsonSerializerHelper.Serialize(
 					toBuyStocks.Select(s => 
 						new 
 						{ 

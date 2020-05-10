@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Investments.Advisor.AzureProxies
@@ -44,7 +43,7 @@ namespace Investments.Advisor.AzureProxies
 
 			await _httpClient.PostAsync(
 				_submitOrdersFunctionUrl, 
-				new StringContent(JsonSerializer.Serialize(orders), Encoding.UTF8, "application/json"));
+				new StringContent(JsonSerializerHelper.Serialize(orders), Encoding.UTF8, "application/json"));
 		}
 
 		private class TradePortfolio

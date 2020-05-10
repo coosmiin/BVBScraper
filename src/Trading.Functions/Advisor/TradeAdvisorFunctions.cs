@@ -15,8 +15,7 @@ namespace Trading.Functions.Advisor
 
 		[FunctionName(nameof(CalculateToBuyStocks))]
 		public static IActionResult CalculateToBuyStocks(
-			[HttpTrigger(AuthorizationLevel.Function, "post", Route = "calculateToBuyStocks")] AdvisorRequest request,
-			ILogger log)
+			[HttpTrigger(AuthorizationLevel.Function, "post", Route = "calculateToBuyStocks")] AdvisorRequest request)
 		{
 			var stockPrices = request.BETStocks.AsStockPrices();
 			var targetWeights = request.BETStocks.AsStockWeights();

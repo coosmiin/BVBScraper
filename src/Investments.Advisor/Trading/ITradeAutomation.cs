@@ -9,5 +9,7 @@ namespace Investments.Advisor.Trading
 		Task<(Stock[] Stocks, decimal AvailableAmount)> GetPortfolio();
 
 		Task SubmitOrders(TradeOrder[] orders);
+
+		Task SignOrders();
 	}
 }

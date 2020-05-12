@@ -3,7 +3,6 @@ using Investments.Domain.Trading;
 using Investments.Utils.Serialization;
 using Microsoft.Extensions.Logging;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Investments.Advisor.Trading
@@ -50,6 +49,12 @@ namespace Investments.Advisor.Trading
 			var toBuyStocks = 
 				await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, betStocks);
 
+			if (!toBuyStocks.Any())
+			{
+				_logger.LogWarning("Advisor could not find any stocks to buy!");
+				return;
+			}
+
 			_logger.LogInformation(
 				"Calculated to buy stocks: {toBuyStocks}",
 				JsonSerializerHelper.Serialize(
@@ -69,7 +74,11 @@ namespace Investments.Advisor.Trading
 
 			await _tradeAutomation.SubmitOrders(tradeOrders);
 
-			_logger.LogInformation("Orders submitted. Transaction session completed!");
+			_logger.LogInformation("Orders submitted");
+
+			await _tradeAutomation.SignOrders();
+
+			_logger.LogInformation("Orders signed. Session completed!");
 		}
 	}
 }

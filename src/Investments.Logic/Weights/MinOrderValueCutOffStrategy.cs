@@ -26,13 +26,21 @@ namespace Investments.Logic.Weights
 			// Adjust weights based on initial strategy
 			var adjustedWeights = _innerStrategy.AdjustWeights(currentWeights, targetWeights, toBuyInverseRatio);
 
-			// Cut off those that are too small
-			targetWeights = adjustedWeights.Where(w => w.Value > _minWeight).AsStockWeights();
-
-			// Redistributes deleted weights
-			targetWeights = targetWeights.Redistribute();
+			// Cut off insufficient weights trying to maximize number of resulting weigthts
+			targetWeights = CutOffAndRedistribute(targetWeights);
 
 			return targetWeights;
+
+			StockWeights CutOffAndRedistribute(StockWeights weights)
+			{
+				weights = weights.Redistribute();
+				if (weights.Any(w => w.Value <= _minWeight))
+				{
+					weights = CutOffAndRedistribute(weights.Take(weights.Count - 1).AsStockWeights());
+				}
+
+				return weights;
+			}
 		}
 	}
 }

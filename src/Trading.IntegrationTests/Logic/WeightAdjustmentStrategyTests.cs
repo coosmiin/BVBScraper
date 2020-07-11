@@ -27,7 +27,7 @@ namespace Trading.IntegrationTests.Logic
 		[Test]
 		public void MinOrderValueCutOffStrategy_AsExpected()
 		{
-			var toBuyAmount = 2000m;
+			var toBuyAmount = 2070.2175m;
 			var (currentWeights, targetWeights, portfolioValue) = TestResources.ReadWeights();
 
 			var strategy = new MinOrderValueCutOffStrategy(new FollowTargetAdjustmentStrategy(), MIN_ORDER_VALUE / toBuyAmount);

@@ -27,7 +27,7 @@ namespace Investments.Logic.Weights
 			var adjustedWeights = _innerStrategy.AdjustWeights(currentWeights, targetWeights, toBuyInverseRatio);
 
 			// Cut off insufficient weights trying to maximize number of resulting weigthts
-			targetWeights = CutOffAndRedistribute(targetWeights);
+			targetWeights = CutOffAndRedistribute(adjustedWeights);
 
 			return targetWeights;
 

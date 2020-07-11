@@ -33,7 +33,7 @@ namespace Investments.Logic.Weights
 				.AsStockWeights();
 
 			// Enforce the second constraint
-			return toBuyWeights.Select(w => (w.Key, w.Value / toBuyWeights.Sum(w => w.Value))).AsStockWeights();
+			return toBuyWeights.Redistribute();
 
 			decimal SafeGetCurrentWeight(string symbol)
 			{

@@ -1,16 +1,58 @@
-{
-	"ALR": 21,
-	"BRD": 62,
-	"DIGI": 4,
-	"EL": 14,
-	"FP": 1461,
-	"M": 2,
-	"SFG": 2,
-	"SNG": 25,
-	"SNN": 6,
-	"SNP": 3559,
-	"TEL": 2,
-	"TGN": 1,
-	"TLV": 677,
-	"WINE": 2
-}
+[
+	{
+		"symbol": "ALR",
+		"count": 21
+	},
+	{
+		"symbol": "BRD",
+		"count": 108
+	},
+	{
+		"symbol": "DIGI",
+		"count": 4
+	},
+	{
+		"symbol": "EL",
+		"count": 14
+	},
+	{
+		"symbol": "FP",
+		"count": 2109
+	},
+	{
+		"symbol": "M",
+		"count": 2
+	},
+	{
+		"symbol": "SFG",
+		"count": 2
+	},
+	{
+		"symbol": "SNG",
+		"count": 45
+	},
+	{
+		"symbol": "SNN",
+		"count": 6
+	},
+	{
+		"symbol": "SNP",
+		"count": 9176
+	},
+	{
+		"symbol": "TEL",
+		"count": 2
+	},
+	{
+		"symbol": "TGN",
+		"count": 1
+	},
+	{
+		"symbol": "TLV",
+		"count": 1688
+	},
+	{
+		"symbol": "WINE",
+		"count": 2
+	}
+]

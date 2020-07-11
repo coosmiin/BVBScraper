@@ -23,6 +23,7 @@ namespace Investments.Logic.Weights
 			// Apply the first constraint and remove the target weights that don't fulfill it
 			var allowedWeights = targetWeights
 				.Where(w => SafeGetCurrentWeight(w.Key) <= w.Value * (1 + 1 / toBuyInverseRatio))
+				.OrderByDescending(w => w.Value)
 				.AsStockWeights();
 
 			// Redistribute the removed weights to the other weights

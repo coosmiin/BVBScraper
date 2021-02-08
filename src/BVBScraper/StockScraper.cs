@@ -7,7 +7,7 @@ namespace Trading.BVBScraper
 {
 	public class StockScraper
 	{
-		private const string BET_INDEX_COMPOSITION_URL = "http://www.bvb.ro/FinancialInstruments/Indices/IndicesProfiles";
+		private const string BET_INDEX_COMPOSITION_URL = "https://www.bvb.ro/FinancialInstruments/Indices/IndicesProfiles";
 
 		private readonly IBrowsingContext _browsingContext;
 
@@ -20,7 +20,7 @@ namespace Trading.BVBScraper
 		{
 			var document = await _browsingContext.OpenAsync(BET_INDEX_COMPOSITION_URL);
 
-			var stockRows = document.QuerySelectorAll("table.generic-table tbody tr");
+			var stockRows = document.QuerySelectorAll("table#gvC tbody tr");
 
 			var stocks = new List<BETStock>();
 

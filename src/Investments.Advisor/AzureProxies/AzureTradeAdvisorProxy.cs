@@ -1,5 +1,6 @@
 ﻿using Investments.Advisor.Trading;
 using Investments.Domain.Stocks;
+using Investments.Utils.Linq.Extensions;
 using Investments.Utils.Serialization;
 using System.Net.Http;
 using System.Text;
@@ -35,7 +36,9 @@ namespace Investments.Advisor.AzureProxies
 					_functionUri,
 					new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json"));
 
-			return JsonSerializerHelper.Deserialize<Stock[]>(await result.Content.ReadAsStringAsync());
+			var stocks = JsonSerializerHelper.Deserialize<Stock[]>(await result.Content.ReadAsStringAsync());
+			
+			return stocks.OrEmpty();
 		}
 	}
 }

@@ -9,9 +9,9 @@ namespace Investments.Utils.Serialization
 	public static class JsonSerializerHelper
 	{
 		private static readonly JsonSerializerOptions _serializerOptions = 
-			new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+			new() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
-		public static T Deserialize<T>(string json)
+		public static T? Deserialize<T>(string json)
 		{
 			return JsonSerializer.Deserialize<T>(json, _serializerOptions);
 		}

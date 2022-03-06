@@ -13,7 +13,7 @@ namespace Investments.Domain.Tests.Portfolios
 		{
 			var portfolio = new Portfolio();
 
-			Assert.True(portfolio.Count() == 0);
+			Assert.True(portfolio.Any());
 		}
 
 		[Test]

@@ -11,9 +11,9 @@ namespace Trading.BVBScraper
 
 		private readonly IBrowsingContext _browsingContext;
 
-		public StockScraper(IBrowsingContext browsingContext = null)
+		public StockScraper()
 		{
-			_browsingContext = browsingContext ?? BrowsingContext.New(Configuration.Default.WithDefaultLoader());
+			_browsingContext = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
 		}
 
 		public async Task<IEnumerable<BETStock>> ScrapeBETComposition()
@@ -26,9 +26,12 @@ namespace Trading.BVBScraper
 
 			foreach (IHtmlTableRowElement row in stockRows)
 			{
+				var symbol = row.Cells[0].QuerySelector("a")?.TextContent;
+				if (symbol == null) continue;
+
 				stocks.Add(new BETStock
 				{
-					Symbol = row.Cells[0].QuerySelector("a").TextContent,
+					Symbol = symbol,
 					Name = row.Cells[1].TextContent,
 					Price = decimal.Parse(row.Cells[3].TextContent),
 					Weight = decimal.Parse(row.Cells[7].TextContent) / 100

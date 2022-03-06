@@ -1,9 +1,10 @@
-﻿using Investments.Domain.Stocks;
-using Investments.Domain.Stocks.Extensions;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Investments.Domain.Stocks;
+using Investments.Domain.Stocks.Extensions;
+using Investments.Utils.Linq.Extensions;
 
 namespace Investments.Domain.Portfolios
 {
@@ -21,7 +22,7 @@ namespace Investments.Domain.Portfolios
 			_stocks = Enumerable.Empty<Stock>().ToList();
 		}
 
-		public Portfolio(Stock[] stocks)
+		public Portfolio(Stock[]? stocks)
 		{
 			_stocks = stocks?.ToList() ?? Enumerable.Empty<Stock>().ToList();
 
@@ -66,9 +67,9 @@ namespace Investments.Domain.Portfolios
 			return _stocks.GetEnumerator();
 		}
 
-		private Stock Get(string symbol)
+		private Stock? Get(string symbol)
 		{
-			return _stocks.SingleOrDefault(s => s.Symbol == symbol);
+			return _stocks.OrEmpty().SingleOrDefault(s => s.Symbol == symbol);
 		}
 
 		private void RecalculateWeightsIfStale()

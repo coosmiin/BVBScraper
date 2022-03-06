@@ -9,10 +9,10 @@ namespace Investments.Logic.Portfolios
 {
 	public class PortfolioBuilder
 	{
-		private IWeightAdjustmentStrategy _weightStrategy;
-		private StockPrices _stockPrices;
-		private StockWeights _targetWeights;
-		private Stock[] _stocks;
+		private IWeightAdjustmentStrategy? _weightStrategy;
+		private StockPrices _stockPrices = new();
+		private StockWeights _targetWeights = new();
+		private Stock[]? _stocks;
 		private decimal _toBuyAmount;
 		private int _minOrderValue;
 
@@ -40,7 +40,11 @@ namespace Investments.Logic.Portfolios
 			void RecalculateWeights(Portfolio portfolio)
 			{
 				_weightStrategy ??= new NoWeightAdjustmentStrategy();
-				_targetWeights = _weightStrategy.AdjustWeights(portfolio.StockWeights, _targetWeights, portfolio.TotalValue / _toBuyAmount);
+				_targetWeights = 
+					_weightStrategy.AdjustWeights(
+						portfolio.StockWeights, 
+						_targetWeights, 
+						portfolio.TotalValue / _toBuyAmount);
 			}
 
 			Portfolio BuildPortfolio(Portfolio portfolio)
@@ -119,7 +123,7 @@ namespace Investments.Logic.Portfolios
 				throw new ArgumentException($"Available amount ({_toBuyAmount}) needs to be higher than 0");
 
 			if (_targetWeights.Any(w => w.Value > 1))
-				throw new ArgumentException($"Target weights cannot be higher than 100% ({_targetWeights.First(w => w.Value > 1).Key} weight: {_targetWeights.First(w => w.Value > 1)})");			
+				throw new ArgumentException($"Target weights cannot be higher than 100% ({_targetWeights.First(w => w.Value > 1).Key} weight: {_targetWeights.First(w => w.Value > 1)})");
 
 			if (!MathHelper.IsApproxOne(_targetWeights.Sum(w => w.Value)))
 				throw new ArgumentException($"Sum of target weights has to be approx 100% ({_targetWeights.Sum(w => w.Value)})");

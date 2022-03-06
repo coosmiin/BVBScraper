@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Investments.Advisor.Exceptions
 {
@@ -13,6 +14,10 @@ namespace Investments.Advisor.Exceptions
 		}
 
 		public InvalidBETDataException(string message, Exception innerException) : base(message, innerException)
+		{
+		}
+
+		protected InvalidBETDataException(SerializationInfo info, StreamingContext context) : base(info, context)
 		{
 		}
 	}

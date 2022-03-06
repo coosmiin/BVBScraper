@@ -1,14 +1,14 @@
-﻿using Investments.Advisor.AzureProxies;
-using Investments.Advisor.Exceptions;
-using Investments.Advisor.Tests.Properties;
-using Moq;
-using Moq.Protected;
-using NUnit.Framework;
-using System;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Investments.Advisor.AzureProxies;
+using Investments.Advisor.Exceptions;
+using Moq;
+using Moq.Protected;
+using NUnit.Framework;
 
 namespace Investments.Advisor.Tests.Providers
 {
@@ -17,7 +17,7 @@ namespace Investments.Advisor.Tests.Providers
 		[Test]
 		public async Task GetBETStocksAsync_ValidResponse_StocksAreCorrect()
 		{
-			var httpClient = BuildHttpClient(Resources.bvb_index);
+			var httpClient = BuildHttpClient(File.ReadAllText(@"TestData/bvb-index.json"));
 
 			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
 
@@ -32,7 +32,7 @@ namespace Investments.Advisor.Tests.Providers
 		[Test]
 		public void GetBETStocksAsync_InvalidCase_ThrowsException()
 		{
-			var httpClient = BuildHttpClient(Resources.bvb_index_pascal_case);
+			var httpClient = BuildHttpClient(File.ReadAllText(@"TestData/bvb-index.pascal-case.json"));
 
 			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
 

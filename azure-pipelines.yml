@@ -6,11 +6,13 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  name: build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: --configuration Release
 - task: DotNetCoreCLI@2
+  name: test
   inputs:
     command: 'test'
     projects: '**/*.*Tests.csproj'

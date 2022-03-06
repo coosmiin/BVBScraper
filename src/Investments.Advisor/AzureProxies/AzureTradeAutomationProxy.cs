@@ -1,8 +1,10 @@
-﻿using Investments.Advisor.Trading;
+﻿using Investments.Advisor.Exceptions;
+using Investments.Advisor.Trading;
 using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
 using Investments.Domain.Trading;
 using Investments.Utils.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -36,7 +38,11 @@ namespace Investments.Advisor.AzureProxies
 
 			getPortfolioResponse.EnsureSuccessStatusCode();
 
-			var currentPortfolio = JsonSerializerHelper.Deserialize<TradePortfolio>(await getPortfolioResponse.Content.ReadAsStringAsync());
+			var currentPortfolio = 
+				JsonSerializerHelper.Deserialize<TradePortfolio>(
+					await getPortfolioResponse.Content.ReadAsStringAsync());
+
+			if (currentPortfolio == null) throw new InvalidPortfolioDataException("Portfolio details could not be parsed");
 
 			return (currentPortfolio.ExistingStocks.AsStocks(), currentPortfolio.AvailableAmount);
 		}

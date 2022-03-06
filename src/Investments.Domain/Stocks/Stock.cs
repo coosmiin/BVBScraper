@@ -4,7 +4,7 @@ namespace Investments.Domain.Stocks
 {
 	public class Stock
 	{
-		public string Symbol { get; set; }
+		public string Symbol { get; set; } = string.Empty;
 
 		public int Count { get; set; }
 
@@ -29,8 +29,11 @@ namespace Investments.Domain.Stocks
 		/// <remarks>
 		/// In case prices are different, the second stock is leading; Weight is reset;
 		/// </remarks>
-		public static Stock operator +(Stock stock1, Stock stock2)
+		public static Stock operator +(Stock stock1, Stock? stock2)
 		{
+			if (stock2 == null)
+				return stock1;
+
 			if (stock1.Symbol == stock2.Symbol)
 			{
 				return new Stock(stock2.Symbol) { Price = stock2.Price, Count = stock1.Count + stock2.Count };
@@ -45,7 +48,7 @@ namespace Investments.Domain.Stocks
 		/// <remarks>
 		/// In case prices are different, the first stock is leading; Weight is reset;
 		/// </remarks>
-		public static Stock operator -(Stock stock1, Stock stock2)
+		public static Stock operator -(Stock stock1, Stock? stock2)
 		{
 			if (stock2 == null)
 				return stock1;

@@ -1,18 +1,25 @@
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Trading.BVBScraper;
-using System.Linq;
+using Trading.Functions.Environments;
 
 namespace Trading.Functions.BVB
 {
-	public static class BETIndexFunctions
+	public class BETIndexFunctions
 	{
+		private readonly StockScraper _stockScraper;
+
+		public BETIndexFunctions(StockScraper stockScraper, IEnvironment environment)
+		{
+			_stockScraper = stockScraper ?? throw new System.ArgumentNullException(nameof(stockScraper));
+		}
+
 		[FunctionName(nameof(ScrapeBETIndex))]
-		public static async Task<IActionResult> ScrapeBETIndex(
+		public async Task<IActionResult> ScrapeBETIndex(
 			[HttpTrigger(AuthorizationLevel.Function, "get", Route = "scrapeBETIndex")] HttpRequest request)
 		{
 			var scraper = new StockScraper();

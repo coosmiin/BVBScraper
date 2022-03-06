@@ -5,6 +5,7 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
+using Trading.BVBScraper;
 using Trading.Functions.Environments;
 
 [assembly: FunctionsStartup(typeof(Trading.Functions.Startup))]
@@ -24,6 +25,7 @@ namespace Trading.Functions
 			var services = builder.Services;
 
 			services
+				.AddSingleton(new StockScraper())
 				.AddSingleton<IEnvironment>(ResolveEnvironment)
 				.AddSingleton<IBVBDataProvider>(ResolveBVBDataProvider)
 				.AddSingleton<ITradeAutomation>(ResolveTradeAutomation)
@@ -59,19 +61,19 @@ namespace Trading.Functions
 		private void ConfigureBVBClient(IServiceProvider provider, HttpClient client)
 		{
 			var environment = provider.GetService<IEnvironment>();
-			client.BaseAddress = environment.TradingFunctionsHost;
+			client.BaseAddress = environment?.TradingFunctionsHost;
 		}
 
 		private void ConfigureTradeAutomationClient(IServiceProvider provider, HttpClient client)
 		{
 			var environment = provider.GetService<IEnvironment>();
-			client.BaseAddress = environment.TradeAutomationFunctionsHost;
+			client.BaseAddress = environment?.TradeAutomationFunctionsHost;
 		}
 
 		private void ConfigureTradeAdvisorClient(IServiceProvider provider, HttpClient client)
 		{
 			var environment = provider.GetService<IEnvironment>();
-			client.BaseAddress = environment.TradingFunctionsHost;
+			client.BaseAddress = environment?.TradingFunctionsHost;
 		}
 
 		private IEnvironment ResolveEnvironment(IServiceProvider provider)

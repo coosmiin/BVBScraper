@@ -12,7 +12,7 @@ namespace Investments.Logic.Portfolios
 
 			return portfolio.Select(s => s - SafeGetStock(s.Symbol)).Where(s => s.Count > 0).ToArray();
 
-			Stock SafeGetStock(string symbol)
+			Stock? SafeGetStock(string symbol)
 			{
 				if (initialStocks.ContainsKey(symbol))
 					return initialStocks[symbol];

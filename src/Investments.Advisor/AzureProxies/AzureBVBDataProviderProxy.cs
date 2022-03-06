@@ -2,7 +2,9 @@
 using Investments.Advisor.Models;
 using Investments.Advisor.Providers;
 using Investments.Domain.Stocks;
+using Investments.Utils.Linq.Extensions;
 using Investments.Utils.Serialization;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -26,16 +28,16 @@ namespace Investments.Advisor.AzureProxies
 		{
 			var result = await _httpClient.GetStringAsync(_functionUri);
 
-			var indexStocks = JsonSerializerHelper.Deserialize<BETStock[]>(result);
+			var indexStocks = JsonSerializerHelper.Deserialize<BETStock[]>(result).OrEmpty();
 
 			ThrowIfInvalid(indexStocks, result);
 
 			return indexStocks.Select(s => new Stock(s.Symbol) { Price = s.Price, Weight = s.Weight }).ToArray();
 		}
 
-		private void ThrowIfInvalid(BETStock[] indexStocks, string rawResult)
+		private static void ThrowIfInvalid(IEnumerable<BETStock> indexStocks, string rawResult)
 		{
-			if (indexStocks.Length == 0)
+			if (!indexStocks.Any())
 				throw new InvalidBETDataException("'ScrapeBETIndex' Azure Function returned 0 results");
 
 			if (indexStocks.Any(s => string.IsNullOrEmpty(s.Symbol))

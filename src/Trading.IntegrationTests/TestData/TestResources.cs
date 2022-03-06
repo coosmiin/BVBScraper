@@ -1,8 +1,8 @@
-﻿using Investments.Domain.Portfolios;
+﻿using System.IO;
+using Investments.Domain.Portfolios;
 using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
 using Investments.Utils.Serialization;
-using Trading.IntegrationTests.Properties;
 
 namespace Trading.IntegrationTests.TestData
 {
@@ -17,8 +17,8 @@ namespace Trading.IntegrationTests.TestData
 
 		internal static (Stock[] currentStocks, Stock[] bvbStocks, decimal portfolioValue) ReadStocks()
 		{
-			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(Resources.bet_index);
-			var currentStocks = JsonSerializerHelper.Deserialize<Stock[]>(Resources.portfolio);
+			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(File.ReadAllText(@"TestData/bet-index.json"));
+			var currentStocks = JsonSerializerHelper.Deserialize<Stock[]>(File.ReadAllText(@"TestData/portfolio.json"));
 
 			currentStocks = currentStocks.UpdatePrices(bvbStocks.AsStockPrices());
 

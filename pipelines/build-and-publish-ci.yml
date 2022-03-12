@@ -5,19 +5,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DotNetCoreCLI@2
-  name: build
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: --configuration Release
-
+- script: |
+    dotnet restore
+    dotnet build --configuration Release
+    
 - task: DotNetCoreCLI@2
   displayName: 'publish functions'
   inputs:
     command: publish
     arguments: '--configuration Release --output publish_output'
-    projects: '*.csproj'
+    projects: '**/*.csproj'
     publishWebProjects: false
     modifyOutputPath: false
     zipAfterPublish: false

@@ -5,10 +5,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: |
-    dotnet restore
-    dotnet build --configuration Release
-
 - task: DotNetCoreCLI@2
   displayName: 'publish functions'
   inputs:
@@ -28,8 +24,5 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/build$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
-  displayName: 'publish artefact'
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    artifactName: 'drop'
+- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  artifact: drop

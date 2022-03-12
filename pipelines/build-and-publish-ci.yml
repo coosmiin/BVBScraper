@@ -24,5 +24,6 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/build$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+- publish: '$(Build.ArtifactStagingDirectory)/build$(Build.BuildId).zip'
+  displayName: 'publish artifact'
   artifact: drop

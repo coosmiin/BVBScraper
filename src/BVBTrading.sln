@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Advisor.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investments.Utils", "Investments.Utils\Investments.Utils.csproj", "{8BEF03EE-9854-44F7-B925-CC8E2605A25A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BvbScraper", "BVBScraper\BvbScraper.csproj", "{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BvbScraper2", "BVBScraper\BvbScraper2.csproj", "{19D6D9A7-C3D2-438E-AB3B-90541ACB015B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trading.Functions", "Trading.Functions\Trading.Functions.csproj", "{7184B34A-BB4B-4A72-B7F7-03F26194587D}"
 EndProject

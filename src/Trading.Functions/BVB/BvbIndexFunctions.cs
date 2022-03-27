@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Trading.BVBScraper;
+using Trading.BvbScraper;
 
-namespace Trading.Functions.BVB
+namespace Trading.Functions.Bvb
 {
 	public class BvbIndexFunctions
 	{

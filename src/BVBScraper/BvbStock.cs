@@ -1,4 +1,4 @@
-﻿namespace Trading.BVBScraper
+﻿namespace Trading.BvbScraper
 {
 	public class BvbStock
 	{

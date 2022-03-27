@@ -10,7 +10,7 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\BVBScraper\BvbScraper.csproj" />
+		<ProjectReference Include="..\BvbScraper\BvbScraper.csproj" />
 		<ProjectReference Include="..\Investments.Advisor\Investments.Advisor.csproj" />
 		<ProjectReference Include="..\Investments.Domain\Investments.Domain.csproj" />
 		<ProjectReference Include="..\Investments.Logic\Investments.Logic.csproj" />

@@ -5,7 +5,7 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
-using Trading.BVBScraper;
+using Trading.BvbScraper;
 using Trading.Functions.Environments;
 
 [assembly: FunctionsStartup(typeof(Trading.Functions.Startup))]

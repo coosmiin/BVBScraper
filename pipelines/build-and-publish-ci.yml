@@ -1,4 +1,4 @@
- name: ci_$(SourceBranchName).$(rev:r)
+name: ci_publish_$(SourceBranchName).$(rev:r)
 
 trigger:
   branches:

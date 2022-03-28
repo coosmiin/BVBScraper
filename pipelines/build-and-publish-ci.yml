@@ -1,5 +1,9 @@
+ name: ci_$(SourceBranchName).$(rev:r)
+
 trigger:
-- master
+  branches:
+    include:
+    - master
 
 pool:
   vmImage: ubuntu-latest

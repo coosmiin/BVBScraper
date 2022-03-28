@@ -1,9 +1,9 @@
 name: ci_publish_$(SourceBranchName).$(rev:r)
 
 trigger:
-  branches:
-    include:
-    - master
+- master
+
+pr: none
 
 pool:
   vmImage: ubuntu-latest

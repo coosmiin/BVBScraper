@@ -15,13 +15,13 @@ namespace Investments.Advisor.Tests.Providers
 	public class AzureBVBDataProviderProxyTests
 	{
 		[Test]
-		public async Task GetBETStocksAsync_ValidResponse_StocksAreCorrect()
+		public async Task GetBvbStocksAsync_ValidResponse_StocksAreCorrect()
 		{
 			var httpClient = BuildHttpClient(File.ReadAllText(@"TestData/bvb-index.json"));
 
-			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
+			var provider = new AzureBvbDataProviderProxy(httpClient, string.Empty);
 
-			var result = await provider.GetBETStocksAsync();
+			var result = await provider.GetBvbStocksAsync();
 
 			Assert.AreEqual(2, result.Length);
 			Assert.AreEqual("FP", result[0].Symbol);
@@ -30,23 +30,23 @@ namespace Investments.Advisor.Tests.Providers
 		}
 
 		[Test]
-		public void GetBETStocksAsync_InvalidCase_ThrowsException()
+		public void GetBvbStocksAsync_InvalidCase_ThrowsException()
 		{
 			var httpClient = BuildHttpClient(File.ReadAllText(@"TestData/bvb-index.pascal-case.json"));
 
-			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
+			var provider = new AzureBvbDataProviderProxy(httpClient, string.Empty);
 
-			Assert.ThrowsAsync<InvalidBETDataException>(async () => await provider.GetBETStocksAsync());
+			Assert.ThrowsAsync<InvalidBvbDataException>(async () => await provider.GetBvbStocksAsync());
 		}
 
 		[Test]
-		public void GetBETStocksAsync_EmptyArrayResult_ThrowsException()
+		public void GetBvbStocksAsync_EmptyArrayResult_ThrowsException()
 		{
 			var httpClient = BuildHttpClient("[]");
 
-			var provider = new AzureBVBDataProviderProxy(httpClient, string.Empty);
+			var provider = new AzureBvbDataProviderProxy(httpClient, string.Empty);
 
-			Assert.ThrowsAsync<InvalidBETDataException>(async () => await provider.GetBETStocksAsync());
+			Assert.ThrowsAsync<InvalidBvbDataException>(async () => await provider.GetBvbStocksAsync());
 		}
 
 		private HttpClient BuildHttpClient(string testData)

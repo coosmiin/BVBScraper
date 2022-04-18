@@ -1,6 +1,6 @@
 ﻿namespace Investments.Advisor.Models
 {
-	public class BETStock
+	public class BvbStock
 	{
 		public string Symbol { get; set; } = string.Empty;
 

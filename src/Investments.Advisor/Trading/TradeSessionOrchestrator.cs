@@ -9,13 +9,13 @@ namespace Investments.Advisor.Trading
 {
 	public class TradeSessionOrchestrator : ITradeSessionOrchestrator
 	{
-		private readonly IBVBDataProvider _bvbDataProvider;
+		private readonly IBvbDataProvider _bvbDataProvider;
 		private readonly ITradeAutomation _tradeAutomation;
 		private readonly ITradeAdvisor _tradeAdvisor;
 		private readonly ILogger _logger;
 
 		public TradeSessionOrchestrator(
-			IBVBDataProvider bvbDataProvider,
+			IBvbDataProvider bvbDataProvider,
 			ITradeAutomation tradeAutomation,
 			ITradeAdvisor tradeAdvisor,
 			ILogger<TradeSessionOrchestrator> logger)
@@ -30,11 +30,11 @@ namespace Investments.Advisor.Trading
 		{
 			_logger.LogInformation("Start transaction session");
 
-			var betStocks = await _bvbDataProvider.GetBETStocksAsync();
+			var bvbStocks = await _bvbDataProvider.GetBvbStocksAsync();
 
 			_logger.LogInformation(
 				"Retrieved BET: {betStocks}",
-				JsonSerializerHelper.Serialize(betStocks.Select(s => new { s.Symbol, s.Price, s.Weight}).ToArray()));
+				JsonSerializerHelper.Serialize(bvbStocks.Select(s => new { s.Symbol, s.Price, s.Weight}).ToArray()));
 
 			var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
@@ -47,7 +47,7 @@ namespace Investments.Advisor.Trading
 				JsonSerializerHelper.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));
 
 			var toBuyStocks = 
-				await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, betStocks);
+				await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, bvbStocks);
 
 			if (!toBuyStocks.Any())
 			{
@@ -58,12 +58,12 @@ namespace Investments.Advisor.Trading
 			_logger.LogInformation(
 				"Calculated to buy stocks: {toBuyStocks}",
 				JsonSerializerHelper.Serialize(
-					toBuyStocks.Select(s => 
+					toBuyStocks.Select(stock => 
 						new 
 						{ 
-							s.Symbol, 
-							s.Count, 
-							Value = betStocks.Where(bs => bs.Symbol == s.Symbol).Single().Price * s.Count
+							stock.Symbol, 
+							stock.Count, 
+							Value = bvbStocks.Single(bs => bs.Symbol == stock.Symbol).Price * stock.Count
 						})
 					.ToArray()));
 

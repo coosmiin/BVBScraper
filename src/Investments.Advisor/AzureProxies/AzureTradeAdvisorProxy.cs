@@ -22,13 +22,13 @@ namespace Investments.Advisor.AzureProxies
 			_functionUri = string.Format(FUNCTION_URI_FORMAT, functionKey);
 		}
 
-		public async Task<Stock[]> CalculateToBuyStocksAsync(decimal toBuyAmount, Stock[] existingStocks, Stock[] betStocks)
+		public async Task<Stock[]> CalculateToBuyStocksAsync(decimal toBuyAmount, Stock[] existingStocks, Stock[] bvbStocks)
 		{
 			var payload = new
 			{
 				ToBuyAmount = toBuyAmount,
 				ExistingStocks = existingStocks,
-				BETStocks = betStocks
+				BvbStocks = bvbStocks
 			};
 
 			var result =

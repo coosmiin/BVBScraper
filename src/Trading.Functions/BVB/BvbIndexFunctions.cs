@@ -27,9 +27,9 @@ namespace Trading.Functions.Bvb
 			if (string.IsNullOrEmpty(indexName))
 				throw new ArgumentException($"'index' query string param cannot be null or empty");
 
-			return ScrapeBetIndex();
+			return ScrapeBvbIndex();
 
-			async Task<IActionResult> ScrapeBetIndex()
+			async Task<IActionResult> ScrapeBvbIndex()
 			{
 				var stocks = (await _stockScraper.ScrapeIndexdComposition(indexName)).ToArray();
 

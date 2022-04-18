@@ -11,39 +11,39 @@ using System.Threading.Tasks;
 
 namespace Investments.Advisor.AzureProxies
 {
-	public class AzureBVBDataProviderProxy : IBVBDataProvider
+	public class AzureBvbDataProviderProxy : IBvbDataProvider
 	{
-		private const string FUNCTION_URI_FORMAT = "api/scrapeBETIndex?code={0}";
+		private const string FUNCTION_URI_FORMAT = "api/scrapeBvbIndex?code={0}&index=BET";
 
 		private readonly HttpClient _httpClient;
 		private readonly string _functionUri;
 
-		public AzureBVBDataProviderProxy(HttpClient httpClient, string functionKey)
+		public AzureBvbDataProviderProxy(HttpClient httpClient, string functionKey)
 		{
 			_httpClient = httpClient;
 			_functionUri = string.Format(FUNCTION_URI_FORMAT, functionKey);
 		}
 
-		public async Task<Stock[]> GetBETStocksAsync()
+		public async Task<Stock[]> GetBvbStocksAsync()
 		{
 			var result = await _httpClient.GetStringAsync(_functionUri);
 
-			var indexStocks = JsonSerializerHelper.Deserialize<BETStock[]>(result).OrEmpty();
+			var indexStocks = JsonSerializerHelper.Deserialize<BvbStock[]>(result).OrEmpty();
 
 			ThrowIfInvalid(indexStocks, result);
 
-			return indexStocks.Select(s => new Stock(s.Symbol) { Price = s.Price, Weight = s.Weight }).ToArray();
+			return indexStocks.Select(stock => new Stock(stock.Symbol) { Price = stock.Price, Weight = stock.Weight }).ToArray();
 		}
 
-		private static void ThrowIfInvalid(IEnumerable<BETStock> indexStocks, string rawResult)
+		private static void ThrowIfInvalid(IEnumerable<BvbStock> indexStocks, string rawResult)
 		{
 			if (!indexStocks.Any())
-				throw new InvalidBETDataException("'ScrapeBETIndex' Azure Function returned 0 results");
+				throw new InvalidBvbDataException("'ScrapeBvbIndex' Azure Function returned 0 results");
 
-			if (indexStocks.Any(s => string.IsNullOrEmpty(s.Symbol))
-				|| indexStocks.Any(s => s.Price == 0)
-				|| indexStocks.Any(s => s.Weight == 0))
-				throw new InvalidBETDataException($"'ScrapeBETIndex' Azure Function returned invalid results or deserialization failed: {rawResult}");
+			if (indexStocks.Any(stock => string.IsNullOrEmpty(stock.Symbol))
+				|| indexStocks.Any(stock => stock.Price == 0)
+				|| indexStocks.Any(stock => stock.Weight == 0))
+				throw new InvalidBvbDataException($"'ScrapeBvbIndex' Azure Function returned invalid results or deserialization failed: {rawResult}");
 		}
 	}
 }

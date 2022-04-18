@@ -1,6 +1,6 @@
-﻿namespace Trading.BVBScraper
+﻿namespace Trading.BvbScraper
 {
-	public class BETStock
+	public class BvbStock
 	{
 		public string Symbol { get; set; } = string.Empty;
 

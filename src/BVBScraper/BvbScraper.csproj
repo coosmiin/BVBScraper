@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<AssemblyName>Trading.BVBScraper</AssemblyName>
-		<RootNamespace>Trading.BVBScraper</RootNamespace>
+		<AssemblyName>Trading.BvbScraper</AssemblyName>
+		<RootNamespace>Trading.BvbScraper</RootNamespace>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 

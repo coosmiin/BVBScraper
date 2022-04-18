@@ -1,7 +1,9 @@
 name: ci_$(SourceBranchName).$(rev:r)
 
-# This pipeline does not have a yaml trigger defined - it is expected to
-# be triggered by pull requests (i.e. via a branch policy)
+trigger: none
+
+pr:
+- master
 
 pool:
   vmImage: ubuntu-latest

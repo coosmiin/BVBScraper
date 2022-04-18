@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Investments.Advisor.Providers
 {
-	public interface IBVBDataProvider
+	public interface IBvbDataProvider
 	{
-		Task<Stock[]> GetBETStocksAsync();
+		Task<Stock[]> GetBvbStocksAsync();
 	}
 }

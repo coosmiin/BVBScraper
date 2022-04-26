@@ -1,7 +1,9 @@
 ﻿using Investments.Advisor.Providers;
+using Investments.Domain.Stocks;
 using Investments.Domain.Trading;
 using Investments.Utils.Serialization;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,58 +29,95 @@ namespace Investments.Advisor.Trading
 		}
 
 		public async Task Run()
-		{
-			_logger.LogInformation("Start transaction session");
+        {
+            _logger.LogInformation("Start transaction session");
+			
+			var getBetStocksTask = GetBvbStocks("BET");
+			var getBetAeroStocksTask = GetBvbStocks("BETAeRO");
 
-			var bvbStocks = await _bvbDataProvider.GetBvbStocksAsync();
+			Task.WaitAll(getBetStocksTask, getBetAeroStocksTask);
 
-			_logger.LogInformation(
-				"Retrieved BET: {betStocks}",
-				JsonSerializerHelper.Serialize(bvbStocks.Select(s => new { s.Symbol, s.Price, s.Weight}).ToArray()));
+            var betStocks = getBetStocksTask.Result;
+			var betAeroStocks = getBetAeroStocksTask.Result;
 
-			var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
+			// Aprox. target ratio: 2/3 BET + 1/3 BETAeRO
+			// Doing buys sequentialy since the estimation risk is elimineted after first buy 
 
-			var toBuyAmount = availableAmount * 0.75m; // to overcome order value estimation risk
+			// First, buy BET index
+			// Ratio is less than 2/3 to overcome the order value estimation risk as well
+			await BuyIndex(0.6m, betStocks);
 
-			_logger.LogInformation(
-				"Retrieved current Portfolio: ({availableAmount} * 0.75 = {toBuyAmount}) {currentStocks}", 
-				availableAmount, 
-				toBuyAmount,
-				JsonSerializerHelper.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));
+			// Second, buy BETAeRO index
+			// Ratio should compensate the order value estimation risk
+			await BuyIndex(0.8m, betAeroStocks);
 
-			var toBuyStocks = 
-				await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, bvbStocks);
+			_logger.LogInformation("Session completed!");
 
-			if (!toBuyStocks.Any())
+			async Task BuyIndex(decimal ratio, Stock[] indexStocks)
 			{
-				_logger.LogWarning("Advisor could not find any stocks to buy!");
-				return;
-			}
+				var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
-			_logger.LogInformation(
-				"Calculated to buy stocks: {toBuyStocks}",
-				JsonSerializerHelper.Serialize(
-					toBuyStocks.Select(stock => 
-						new 
-						{ 
-							stock.Symbol, 
-							stock.Count, 
-							Value = bvbStocks.Single(bs => bs.Symbol == stock.Symbol).Price * stock.Count
-						})
-					.ToArray()));
+				var toBuyAmount = availableAmount * ratio;
 
-			var tradeOrders =
-				toBuyStocks
-					.Select(s => new TradeOrder { Symbol = s.Symbol, Count = s.Count, OperationType = OperationType.Buy })
+				_logger.LogInformation(
+					"Retrieved current Portfolio: ({availableAmount} * {ratio} = {toBuyAmount}) {currentStocks}",
+					availableAmount,
+					ratio,
+					toBuyAmount,
+					JsonSerializerHelper.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));
+
+				// Keep only the stocks from the current index
+				existingStocks = existingStocks
+					.Where(stock => indexStocks.Contains(stock))
 					.ToArray();
 
-			await _tradeAutomation.SubmitOrders(tradeOrders);
+				var toBuyStocks =
+					await _tradeAdvisor.CalculateToBuyStocksAsync(toBuyAmount, existingStocks, indexStocks);
+				
+				if (!toBuyStocks.Any())
+				{
+					_logger.LogWarning("Advisor could not find any stocks to buy!");
+					return;
+				}
 
-			_logger.LogInformation("Orders submitted");
+				_logger.LogInformation(
+					"Calculated to buy stocks: {toBuyStocks}",
+					JsonSerializerHelper.Serialize(
+						toBuyStocks.Select(stock =>
+							new
+							{
+								stock.Symbol,
+								stock.Count,
+								Value = indexStocks.Single(stock => stock.Symbol == stock.Symbol).Price * stock.Count
+							})
+						.ToArray()));
 
-			await _tradeAutomation.SignOrders();
+				var tradeOrders =
+					toBuyStocks
+						.Select(s => new TradeOrder { Symbol = s.Symbol, Count = s.Count, OperationType = OperationType.Buy })
+						.ToArray();
 
-			_logger.LogInformation("Orders signed. Session completed!");
-		}
-	}
+				await _tradeAutomation.SubmitOrders(tradeOrders);
+
+				_logger.LogInformation("Orders submitted");
+
+				await _tradeAutomation.SignOrders();
+
+				_logger.LogInformation("Orders signed");
+
+			}
+
+            async Task<Stock[]> GetBvbStocks(string index)
+            {
+                var bvbStocks = await _bvbDataProvider.GetBvbStocksAsync(index);
+
+                _logger.LogInformation(
+                    "Retrieved {index}: {bvbStocks}",
+					index,
+                    JsonSerializerHelper.Serialize(bvbStocks.Select(stock => new { stock.Symbol, stock.Price, stock.Weight }).ToArray()));
+
+                return bvbStocks;
+            }
+        }
+    }
 }

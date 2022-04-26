@@ -21,7 +21,7 @@ namespace Investments.Advisor.Tests.Providers
 
 			var provider = new AzureBvbDataProviderProxy(httpClient, string.Empty);
 
-			var result = await provider.GetBvbStocksAsync();
+			var result = await provider.GetBvbStocksAsync("BET");
 
 			Assert.AreEqual(2, result.Length);
 			Assert.AreEqual("FP", result[0].Symbol);
@@ -36,7 +36,7 @@ namespace Investments.Advisor.Tests.Providers
 
 			var provider = new AzureBvbDataProviderProxy(httpClient, string.Empty);
 
-			Assert.ThrowsAsync<InvalidBvbDataException>(async () => await provider.GetBvbStocksAsync());
+			Assert.ThrowsAsync<InvalidBvbDataException>(async () => await provider.GetBvbStocksAsync("BET"));
 		}
 
 		[Test]
@@ -46,7 +46,7 @@ namespace Investments.Advisor.Tests.Providers
 
 			var provider = new AzureBvbDataProviderProxy(httpClient, string.Empty);
 
-			Assert.ThrowsAsync<InvalidBvbDataException>(async () => await provider.GetBvbStocksAsync());
+			Assert.ThrowsAsync<InvalidBvbDataException>(async () => await provider.GetBvbStocksAsync("BET"));
 		}
 
 		private HttpClient BuildHttpClient(string testData)

@@ -13,7 +13,7 @@ namespace Investments.Advisor.AzureProxies
 {
 	public class AzureBvbDataProviderProxy : IBvbDataProvider
 	{
-		private const string FUNCTION_URI_FORMAT = "api/scrapeBvbIndex?code={0}&index=BET";
+		private const string FUNCTION_URI_FORMAT = "api/scrapeBvbIndex?code={0}";
 
 		private readonly HttpClient _httpClient;
 		private readonly string _functionUri;
@@ -24,9 +24,10 @@ namespace Investments.Advisor.AzureProxies
 			_functionUri = string.Format(FUNCTION_URI_FORMAT, functionKey);
 		}
 
-		public async Task<Stock[]> GetBvbStocksAsync()
+		public async Task<Stock[]> GetBvbStocksAsync(string index)
 		{
-			var result = await _httpClient.GetStringAsync(_functionUri);
+			var functionUri = string.Format($"{_functionUri}&index={index}");
+			var result = await _httpClient.GetStringAsync(functionUri);
 
 			var indexStocks = JsonSerializerHelper.Deserialize<BvbStock[]>(result).OrEmpty();
 

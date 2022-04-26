@@ -5,6 +5,6 @@ namespace Investments.Advisor.Providers
 {
 	public interface IBvbDataProvider
 	{
-		Task<Stock[]> GetBvbStocksAsync();
+		Task<Stock[]> GetBvbStocksAsync(string index);
 	}
 }

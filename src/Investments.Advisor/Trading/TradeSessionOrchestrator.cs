@@ -1,11 +1,10 @@
-﻿using Investments.Advisor.Providers;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Investments.Advisor.Providers;
 using Investments.Domain.Stocks;
 using Investments.Domain.Trading;
 using Investments.Utils.Serialization;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Investments.Advisor.Trading
 {
@@ -29,15 +28,15 @@ namespace Investments.Advisor.Trading
 		}
 
 		public async Task Run()
-        {
-            _logger.LogInformation("Start transaction session");
+		{
+			_logger.LogInformation("Start transaction session");
 			
 			var getBetStocksTask = GetBvbStocks("BET");
 			var getBetAeroStocksTask = GetBvbStocks("BETAeRO");
 
 			Task.WaitAll(getBetStocksTask, getBetAeroStocksTask);
 
-            var betStocks = getBetStocksTask.Result;
+			var betStocks = getBetStocksTask.Result;
 			var betAeroStocks = getBetAeroStocksTask.Result;
 
 			// Aprox. target ratio: 2/3 BET + 1/3 BETAeRO
@@ -66,9 +65,11 @@ namespace Investments.Advisor.Trading
 					toBuyAmount,
 					JsonSerializerHelper.Serialize(existingStocks.Select(s => new { s.Symbol, s.Count }).ToArray()));
 
+				var indexStocksSet = indexStocks.Select(stock => stock.Symbol).ToHashSet();
+
 				// Keep only the stocks from the current index
 				existingStocks = existingStocks
-					.Where(stock => indexStocks.Contains(stock))
+					.Where(stock => indexStocksSet.Contains(stock.Symbol))
 					.ToArray();
 
 				var toBuyStocks =
@@ -83,12 +84,12 @@ namespace Investments.Advisor.Trading
 				_logger.LogInformation(
 					"Calculated to buy stocks: {toBuyStocks}",
 					JsonSerializerHelper.Serialize(
-						toBuyStocks.Select(stock =>
+						toBuyStocks.Select(toBuyStock =>
 							new
 							{
-								stock.Symbol,
-								stock.Count,
-								Value = indexStocks.Single(stock => stock.Symbol == stock.Symbol).Price * stock.Count
+								toBuyStock.Symbol,
+								toBuyStock.Count,
+								Value = indexStocks.Single(stock => stock.Symbol == toBuyStock.Symbol).Price * toBuyStock.Count
 							})
 						.ToArray()));
 
@@ -107,17 +108,17 @@ namespace Investments.Advisor.Trading
 
 			}
 
-            async Task<Stock[]> GetBvbStocks(string index)
-            {
-                var bvbStocks = await _bvbDataProvider.GetBvbStocksAsync(index);
+			async Task<Stock[]> GetBvbStocks(string index)
+			{
+				var bvbStocks = await _bvbDataProvider.GetBvbStocksAsync(index);
 
-                _logger.LogInformation(
-                    "Retrieved {index}: {bvbStocks}",
+				_logger.LogInformation(
+					"Retrieved {index}: {bvbStocks}",
 					index,
-                    JsonSerializerHelper.Serialize(bvbStocks.Select(stock => new { stock.Symbol, stock.Price, stock.Weight }).ToArray()));
+					JsonSerializerHelper.Serialize(bvbStocks.Select(stock => new { stock.Symbol, stock.Price, stock.Weight }).ToArray()));
 
-                return bvbStocks;
-            }
-        }
-    }
+				return bvbStocks;
+			}
+		}
+	}
 }

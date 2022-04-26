@@ -1,7 +1,7 @@
-﻿using Investments.Domain.Stocks;
+﻿using System.Linq;
+using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
 using Investments.Logic.Calculus;
-using System.Linq;
 
 namespace Investments.Logic.Weights
 {
@@ -22,7 +22,8 @@ namespace Investments.Logic.Weights
 
 			// Apply the first constraint and remove the target weights that don't fulfill it
 			var allowedWeights = targetWeights
-				.Where(w => SafeGetCurrentWeight(w.Key) <= w.Value * (1 + 1 / toBuyInverseRatio))
+				.Where(w => toBuyInverseRatio == 0 // 0 only on the first buy
+					|| SafeGetCurrentWeight(w.Key) <= w.Value * (1 + 1 / toBuyInverseRatio))
 				.OrderByDescending(w => w.Value)
 				.AsStockWeights();
 

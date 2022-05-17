@@ -48,7 +48,7 @@ namespace Investments.Advisor.Trading
 
 			// Second, buy BETAeRO index
 			// Ratio should compensate the order value estimation risk
-			await BuyIndex(0.8m, betAeroStocks, "XRS1");
+			await BuyIndex(0.75m, betAeroStocks, "XRS1");
 
 			_logger.LogInformation("Session completed!");
 

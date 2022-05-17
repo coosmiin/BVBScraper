@@ -44,15 +44,15 @@ namespace Investments.Advisor.Trading
 
 			// First, buy BET index
 			// Ratio is less than 2/3 to overcome the order value estimation risk as well
-			await BuyIndex(0.6m, betStocks);
+			await BuyIndex(0.6m, betStocks, "REGS");
 
 			// Second, buy BETAeRO index
 			// Ratio should compensate the order value estimation risk
-			await BuyIndex(0.8m, betAeroStocks);
+			await BuyIndex(0.8m, betAeroStocks, "XRS1");
 
 			_logger.LogInformation("Session completed!");
 
-			async Task BuyIndex(decimal ratio, Stock[] indexStocks)
+			async Task BuyIndex(decimal ratio, Stock[] indexStocks, string market)
 			{
 				var (existingStocks, availableAmount) = await _tradeAutomation.GetPortfolio();
 
@@ -89,13 +89,20 @@ namespace Investments.Advisor.Trading
 							{
 								toBuyStock.Symbol,
 								toBuyStock.Count,
-								Value = indexStocks.Single(stock => stock.Symbol == toBuyStock.Symbol).Price * toBuyStock.Count
+								Value = indexStocks.Single(stock => stock.Symbol == toBuyStock.Symbol).Price * toBuyStock.Count,
+								market
 							})
 						.ToArray()));
 
 				var tradeOrders =
 					toBuyStocks
-						.Select(s => new TradeOrder { Symbol = s.Symbol, Count = s.Count, OperationType = OperationType.Buy })
+						.Select(stock => new TradeOrder 
+						{ 
+							Symbol = stock.Symbol, 
+							Count = stock.Count, 
+							OperationType = OperationType.Buy,
+							Market = market
+						})
 						.ToArray();
 
 				await _tradeAutomation.SubmitOrders(tradeOrders);

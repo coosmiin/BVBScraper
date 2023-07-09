@@ -1,147 +1,71 @@
 [
 	{
-		"symbol": "AG",
-		"count": 532
-	},
-	{
 		"symbol": "ALR",
 		"count": 21
 	},
 	{
 		"symbol": "AROBS",
-		"count": 2819
-	},
-	{
-		"symbol": "AST",
-		"count": 28
-	},
-	{
-		"symbol": "BENTO",
-		"count": 77
-	},
-	{
-		"symbol": "BNET27A",
-		"count": 9
+		"count": 361
 	},
 	{
 		"symbol": "BRD",
-		"count": 610
-	},
-	{
-		"symbol": "CODE",
-		"count": 42
+		"count": 425
 	},
 	{
 		"symbol": "DIGI",
-		"count": 84
-	},
-	{
-		"symbol": "DN",
-		"count": 966
+		"count": 65
 	},
 	{
 		"symbol": "EL",
-		"count": 336
-	},
-	{
-		"symbol": "ELZY",
-		"count": 48
-	},
-	{
-		"symbol": "FOJE",
-		"count": 44
+		"count": 202
 	},
 	{
 		"symbol": "FP",
-		"count": 11470
-	},
-	{
-		"symbol": "GSH",
-		"count": 408
-	},
-	{
-		"symbol": "H2O",
-		"count": 48
+		"count": 7791
 	},
 	{
 		"symbol": "HAI",
-		"count": 1867
-	},
-	{
-		"symbol": "IPRU",
-		"count": 730
+		"count": 177
 	},
 	{
 		"symbol": "M",
-		"count": 262
-	},
-	{
-		"symbol": "MACO",
-		"count": 29
-	},
-	{
-		"symbol": "MET",
-		"count": 1225
-	},
-	{
-		"symbol": "MILK",
-		"count": 119
-	},
-	{
-		"symbol": "NRF",
-		"count": 138
+		"count": 121
 	},
 	{
 		"symbol": "ONE",
-		"count": 2795
-	},
-	{
-		"symbol": "ROC1",
-		"count": 145
-	},
-	{
-		"symbol": "SAFE",
-		"count": 280
+		"count": 948
 	},
 	{
 		"symbol": "SFG",
 		"count": 2
 	},
 	{
-		"symbol": "SMTL",
-		"count": 50
-	},
-	{
 		"symbol": "SNG",
-		"count": 235
+		"count": 179
 	},
 	{
 		"symbol": "SNN",
-		"count": 125
+		"count": 97
 	},
 	{
 		"symbol": "SNP",
-		"count": 40317
+		"count": 26129
 	},
 	{
 		"symbol": "TEL",
-		"count": 38
+		"count": 17
 	},
 	{
 		"symbol": "TGN",
-		"count": 217
+		"count": 8
 	},
 	{
 		"symbol": "TLV",
-		"count": 1150
+		"count": 5711
 	},
 	{
 		"symbol": "TRP",
-		"count": 3256
-	},
-	{
-		"symbol": "TTS",
-		"count": 28
+		"count": 1482
 	},
 	{
 		"symbol": "WINE",

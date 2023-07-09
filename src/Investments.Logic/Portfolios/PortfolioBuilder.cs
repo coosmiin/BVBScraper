@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Investments.Domain.Portfolios;
 using Investments.Domain.Stocks;
@@ -122,8 +123,9 @@ namespace Investments.Logic.Portfolios
 			if (_toBuyAmount <= 0)
 				throw new ArgumentException($"Available amount ({_toBuyAmount}) needs to be higher than 0");
 
-			if (_targetWeights.Any(w => w.Value > 1))
-				throw new ArgumentException($"Target weights cannot be higher than 100% ({_targetWeights.First(w => w.Value > 1).Key} weight: {_targetWeights.First(w => w.Value > 1)})");
+			var invalidTargetWeight = _targetWeights.FirstOrDefault(w => w.Value > 1);
+			if (!invalidTargetWeight.Equals(default(KeyValuePair<string, decimal>)))
+				throw new ArgumentException($"Target weights cannot be higher than 100% ({invalidTargetWeight.Key} weight: {invalidTargetWeight.Value * 100}% )");
 
 			if (!MathHelper.IsApproxOne(_targetWeights.Sum(w => w.Value)))
 				throw new ArgumentException($"Sum of target weights has to be approx 100% ({_targetWeights.Sum(w => w.Value)})");

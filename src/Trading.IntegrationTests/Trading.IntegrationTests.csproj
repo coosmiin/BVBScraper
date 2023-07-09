@@ -20,7 +20,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="TestData\bet-index.json">
+	  <None Update="TestData\BET-index.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestData\BETAeRO-index.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	  <None Update="TestData\portfolio.json">

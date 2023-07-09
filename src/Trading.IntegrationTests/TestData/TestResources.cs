@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using Investments.Domain.Portfolios;
 using Investments.Domain.Stocks;
 using Investments.Domain.Stocks.Extensions;
@@ -10,17 +11,22 @@ namespace Trading.IntegrationTests.TestData
 	{
 		internal static (StockWeights currentWeights, StockWeights targetWeights, decimal portfolioValue) ReadWeights()
 		{
-			var (currentStocks, bvbStocks, portfolioValue) = ReadStocks();
+			var (currentStocks, bvbStocks, portfolioValue) = ReadStocks("bet");
 
 			return (currentStocks.AsStockWeights(), bvbStocks.AsStockWeights(), portfolioValue);
 		}
 
-		internal static (Stock[] currentStocks, Stock[] bvbStocks, decimal portfolioValue) ReadStocks()
+		internal static (Stock[] currentStocks, Stock[] bvbStocks, decimal portfolioValue) ReadStocks(string index)
 		{
-			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(File.ReadAllText(@"TestData/bet-index.json"));
+			var bvbStocks = JsonSerializerHelper.Deserialize<Stock[]>(File.ReadAllText($@"TestData/{index}-index.json"));
 			var currentStocks = JsonSerializerHelper.Deserialize<Stock[]>(File.ReadAllText(@"TestData/portfolio.json"));
 
-			currentStocks = currentStocks.UpdatePrices(bvbStocks.AsStockPrices());
+			var bvbStocksSet = bvbStocks.Select(stock => stock.Symbol).ToHashSet();
+
+			currentStocks = currentStocks
+				.Where(stock => bvbStocksSet.Contains(stock.Symbol))
+				.ToArray()
+				.UpdatePrices(bvbStocks.AsStockPrices());
 
 			var currentPortfolio = new Portfolio(currentStocks);
 

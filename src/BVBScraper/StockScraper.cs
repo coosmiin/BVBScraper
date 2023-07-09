@@ -1,6 +1,7 @@
 ﻿using AngleSharp;
 using AngleSharp.Html.Dom;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,8 +30,11 @@ namespace Trading.BvbScraper
 				.OfType<IHtmlTableRowElement>();
 
 			var stocks = new List<BvbStock>();
+			var cutlureInfo = stockRows.FirstOrDefault()?.Cells[7].TextContent.Contains(',') == true
+				? new CultureInfo("ro-RO")
+				: CultureInfo.InvariantCulture;
 
-#pragma warning disable S3267 // Loops should be simplified with "LINQ" expressions
+#pragma warning disable S3267 // Loops should be simplified with "LINQ" expressions / Doesn't make sense in this context
 			foreach (IHtmlTableRowElement row in stockRows)
 			{
 				var symbol = row.Cells[0].QuerySelector("a")?.TextContent;
@@ -40,8 +44,8 @@ namespace Trading.BvbScraper
 				{
 					Symbol = symbol,
 					Name = row.Cells[1].TextContent,
-					Price = decimal.Parse(row.Cells[3].TextContent),
-					Weight = decimal.Parse(row.Cells[7].TextContent) / 100
+					Price = decimal.Parse(row.Cells[3].TextContent, cutlureInfo),
+					Weight = decimal.Parse(row.Cells[7].TextContent, cutlureInfo) / 100
 				});
 			}
 #pragma warning restore S3267 // Loops should be simplified with "LINQ" expressions

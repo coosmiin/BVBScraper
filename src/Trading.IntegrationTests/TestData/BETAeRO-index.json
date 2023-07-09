@@ -1,142 +1,177 @@
 [
 	{
 		"symbol": "AROBS",
-		"price": 0.9610,
-		"weight": 0.1544
+		"price": 9660.0,
+		"weight": 14.82
 	},
 	{
 		"symbol": "HAI",
-		"price": 1.7000,
-		"weight": 0.1345
-	},
-	{
-		"symbol": "ROC1",
-		"price": 10.0000,
-		"weight": 0.0863
-	},
-	{
-		"symbol": "SAFE",
-		"price": 12.8400,
-		"weight": 0.0781
-	},
-	{
-		"symbol": "NRF",
-		"price": 8.5000,
-		"weight": 0.0711
-	},
-	{
-		"symbol": "AG",
-		"price": 3.2050,
-		"weight": 0.0607
-	},
-	{
-		"symbol": "ELZY",
-		"price": 15.0000,
-		"weight": 0.0457
+		"price": 12000.0,
+		"weight": 9.86
 	},
 	{
 		"symbol": "SMTL",
-		"price": 23.2500,
-		"weight": 0.04
+		"price": 320000.0,
+		"weight": 7.59
 	},
 	{
-		"symbol": "MILK",
-		"price": 7.2000,
-		"weight": 0.0365
+		"symbol": "ROC1",
+		"price": 90000.0,
+		"weight": 6.4
 	},
 	{
-		"symbol": "AST",
-		"price": 22.4000,
-		"weight": 0.0343
+		"symbol": "MET",
+		"price": 8700.0,
+		"weight": 6.09
+	},
+	{
+		"symbol": "AG",
+		"price": 12500.0,
+		"weight": 4.43
+	},
+	{
+		"symbol": "ELZY",
+		"price": 170000.0,
+		"weight": 4.27
+	},
+	{
+		"symbol": "NRF",
+		"price": 60000.0,
+		"weight": 4.14
+	},
+	{
+		"symbol": "DN",
+		"price": 7440.0,
+		"weight": 3.57
 	},
 	{
 		"symbol": "MACO",
-		"price": 14.9000,
-		"weight": 0.0328
+		"price": 190000.0,
+		"weight": 3.45
 	},
 	{
-		"symbol": "HUNT",
-		"price": 0.7030,
-		"weight": 0.0322
+		"symbol": "AST",
+		"price": 245000.0,
+		"weight": 3.1
+	},
+	{
+		"symbol": "GSH",
+		"price": 15800.0,
+		"weight": 2.86
+	},
+	{
+		"symbol": "MILK",
+		"price": 59000.0,
+		"weight": 2.46
+	},
+	{
+		"symbol": "IPRU",
+		"price": 6000.0,
+		"weight": 2.27
+	},
+	{
+		"symbol": "FOJE",
+		"price": 93000.0,
+		"weight": 2.12
+	},
+	{
+		"symbol": "BENTO",
+		"price": 53000.0,
+		"weight": 2.11
 	},
 	{
 		"symbol": "CODE",
-		"price": 69.2000,
-		"weight": 0.0255
+		"price": 60800.0,
+		"weight": 1.88
 	},
 	{
-		"symbol": "ALW",
-		"price": 13.9000,
-		"weight": 0.0226
-	},
-	{
-		"symbol": "CC",
-		"price": 4.2300,
-		"weight": 0.0184
-	},
-	{
-		"symbol": "MAMA",
-		"price": 0.2260,
-		"weight": 0.017
-	},
-	{
-		"symbol": "2P",
-		"price": 3.9000,
-		"weight": 0.0147
+		"symbol": "UARG",
+		"price": 26000.0,
+		"weight": 1.87
 	},
 	{
 		"symbol": "LIH",
-		"price": 3.8200,
-		"weight": 0.0128
+		"price": 19250.0,
+		"weight": 1.71
 	},
 	{
-		"symbol": "MAM",
-		"price": 4.0400,
-		"weight": 0.0125
+		"symbol": "MAMA",
+		"price": 2700.0,
+		"weight": 1.67
 	},
 	{
-		"symbol": "LCSI",
-		"price": 29.0000,
-		"weight": 0.0109
+		"symbol": "HUNT",
+		"price": 4120.0,
+		"weight": 1.56
+	},
+	{
+		"symbol": "CC",
+		"price": 43000.0,
+		"weight": 1.54
+	},
+	{
+		"symbol": "2P",
+		"price": 20400.0,
+		"weight": 1.34
+	},
+	{
+		"symbol": "SPX",
+		"price": 3220.0,
+		"weight": 1.29
+	},
+	{
+		"symbol": "ALW",
+		"price": 96400.0,
+		"weight": 1.29
+	},
+	{
+		"symbol": "ASC",
+		"price": 35800.0,
+		"weight": 1.27
 	},
 	{
 		"symbol": "FRB",
-		"price": 0.5020,
-		"weight": 0.0108
+		"price": 3720.0,
+		"weight": 0.82
 	},
 	{
 		"symbol": "BONA",
-		"price": 1.4500,
-		"weight": 0.0104
-	},
-	{
-		"symbol": "AAB",
-		"price": 30.9000,
-		"weight": 0.0085
-	},
-	{
-		"symbol": "REIT",
-		"price": 0.1750,
-		"weight": 0.0082
-	},
-	{
-		"symbol": "BIOW",
-		"price": 0.2420,
-		"weight": 0.0059
-	},
-	{
-		"symbol": "ADISS",
-		"price": 0.9240,
-		"weight": 0.0057
-	},
-	{
-		"symbol": "CAB",
-		"price": 0.1332,
-		"weight": 0.0055
+		"price": 13800.0,
+		"weight": 0.82
 	},
 	{
 		"symbol": "CLAIM",
-		"price": 2.5000,
-		"weight": 0.004
+		"price": 47800.0,
+		"weight": 0.63
+	},
+	{
+		"symbol": "REIT",
+		"price": 1610.0,
+		"weight": 0.62
+	},
+	{
+		"symbol": "AAB",
+		"price": 52500.0,
+		"weight": 0.6
+	},
+	{
+		"symbol": "MAM",
+		"price": 28500.0,
+		"weight": 0.49
+	},
+	{
+		"symbol": "ADISS",
+		"price": 7400.0,
+		"weight": 0.38
+	},
+	{
+		"symbol": "CHRD",
+		"price": 200000.0,
+		"weight": 0.37
+	},
+	{
+		"symbol": "BIOW",
+		"price": 1570.0,
+		"weight": 0.32
 	}
 ]

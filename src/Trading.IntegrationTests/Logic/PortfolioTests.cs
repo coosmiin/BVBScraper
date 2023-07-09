@@ -1,10 +1,9 @@
-﻿using Investments.Domain.Stocks.Extensions;
+﻿using System.Linq;
+using Investments.Domain.Stocks.Extensions;
 using Investments.Logic.Calculus;
 using Investments.Logic.Portfolios;
 using Investments.Logic.Weights;
 using NUnit.Framework;
-using System;
-using System.Linq;
 using Trading.IntegrationTests.TestData;
 
 namespace Trading.IntegrationTests.Logic
@@ -14,10 +13,12 @@ namespace Trading.IntegrationTests.Logic
 		private const int MIN_ORDER_VALUE = 250;
 
 		[Test]
-		public void PortfolioBuilder_ExpectedDerivedPortfolio()
+		[TestCase("BET")]
+		[TestCase("BETAeRO")]
+		public void PortfolioBuilder_ExpectedDerivedPortfolio(string index)
 		{
-			var toBuyAmount = 2000m;
-			var (currentStocks, bvbStocks, _) = TestResources.ReadStocks();
+			var toBuyAmount = 1339.1025m;
+			var (currentStocks, bvbStocks, _) = TestResources.ReadStocks(index);
 
 			var strategy =
 				new MinOrderValueCutOffStrategy(

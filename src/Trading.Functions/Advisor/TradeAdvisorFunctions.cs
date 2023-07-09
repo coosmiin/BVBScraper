@@ -1,11 +1,9 @@
-using System.Linq;
 using Investments.Domain.Stocks.Extensions;
 using Investments.Logic.Portfolios;
 using Investments.Logic.Weights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 namespace Trading.Functions.Advisor
 {
@@ -21,8 +19,6 @@ namespace Trading.Functions.Advisor
 			var targetWeights = request.BvbStocks.AsStockWeights();
 
 			var existingStocks = request.ExistingStocks.UpdatePrices(stockPrices);
-
-			decimal currentPortfolioValue = existingStocks.Sum(s => s.TotalValue);
 
 			var strategy =
 				new MinOrderValueCutOffStrategy(

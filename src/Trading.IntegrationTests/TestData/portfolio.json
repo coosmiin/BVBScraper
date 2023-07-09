@@ -4,24 +4,36 @@
 		"count": 21
 	},
 	{
+		"symbol": "AROBS",
+		"count": 361
+	},
+	{
 		"symbol": "BRD",
-		"count": 108
+		"count": 425
 	},
 	{
 		"symbol": "DIGI",
-		"count": 4
+		"count": 65
 	},
 	{
 		"symbol": "EL",
-		"count": 14
+		"count": 202
 	},
 	{
 		"symbol": "FP",
-		"count": 2109
+		"count": 7791
+	},
+	{
+		"symbol": "HAI",
+		"count": 177
 	},
 	{
 		"symbol": "M",
-		"count": 2
+		"count": 121
+	},
+	{
+		"symbol": "ONE",
+		"count": 948
 	},
 	{
 		"symbol": "SFG",
@@ -29,30 +41,34 @@
 	},
 	{
 		"symbol": "SNG",
-		"count": 45
+		"count": 179
 	},
 	{
 		"symbol": "SNN",
-		"count": 6
+		"count": 97
 	},
 	{
 		"symbol": "SNP",
-		"count": 9176
+		"count": 26129
 	},
 	{
 		"symbol": "TEL",
-		"count": 2
+		"count": 17
 	},
 	{
 		"symbol": "TGN",
-		"count": 1
+		"count": 8
 	},
 	{
 		"symbol": "TLV",
-		"count": 1688
+		"count": 5711
+	},
+	{
+		"symbol": "TRP",
+		"count": 1482
 	},
 	{
 		"symbol": "WINE",
-		"count": 2
+		"count": 4
 	}
 ]

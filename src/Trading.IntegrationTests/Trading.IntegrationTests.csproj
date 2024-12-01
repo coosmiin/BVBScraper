@@ -6,24 +6,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="TestData\BET-index.json" />
-		<None Remove="TestData\BETAeRO-index.json" />
-		<None Remove="TestData\portfolio.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="TestData\BET-index.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="TestData\BETAeRO-index.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="TestData\portfolio.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="nunit" Version="3.13.2" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.2.1">
 			<PrivateAssets>all</PrivateAssets>
@@ -35,6 +17,18 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Investments.Logic\Investments.Logic.csproj" />
 		<ProjectReference Include="..\Investments.Utils\Investments.Utils.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="TestData\BET-index.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\BETAeRO-index.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\portfolio.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>

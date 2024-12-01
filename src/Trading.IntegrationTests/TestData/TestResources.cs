@@ -11,7 +11,7 @@ namespace Trading.IntegrationTests.TestData
 	{
 		internal static (StockWeights currentWeights, StockWeights targetWeights, decimal portfolioValue) ReadWeights()
 		{
-			var (currentStocks, bvbStocks, portfolioValue) = ReadStocks("bet");
+			var (currentStocks, bvbStocks, portfolioValue) = ReadStocks("BET");
 
 			return (currentStocks.AsStockWeights(), bvbStocks.AsStockWeights(), portfolioValue);
 		}

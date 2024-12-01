@@ -10,7 +10,7 @@ namespace Trading.IntegrationTests.Logic
 {
 	public class PortfolioTests
 	{
-		private const int MIN_ORDER_VALUE = 250;
+		private const int MIN_ORDER_VALUE = 175;
 
 		[Test]
 		[TestCase("BET")]

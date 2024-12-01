@@ -1,212 +1,102 @@
 [
 	{
-		"symbol": "AROBS",
-		"name": "AROBS TRANSILVANIA SOFTWARE",
-		"price": 0.9660,
-		"weight": 0.1482
+		"symbol": "TLV",
+		"price": 28.4000,
+		"weight": 0.2057
 	},
 	{
-		"symbol": "HAI",
-		"name": "Holde Agri Invest S.A. - Clasa A",
-		"price": 1.2000,
-		"weight": 0.0986
+		"symbol": "SNP",
+		"price": 0.7305,
+		"weight": 0.1913
 	},
 	{
-		"symbol": "SMTL",
-		"name": "SIMTEL TEAM",
-		"price": 32.0000,
-		"weight": 0.0759
+		"symbol": "H2O",
+		"price": 122.1000,
+		"weight": 0.1539
 	},
 	{
-		"symbol": "ROC1",
-		"name": "ROCA INDUSTRY HOLDINGROCK1 S.A.",
-		"price": 9.0000,
-		"weight": 0.064
+		"symbol": "SNG",
+		"price": 5.3300,
+		"weight": 0.0863
 	},
 	{
-		"symbol": "MET",
-		"name": "META ESTATE TRUST",
-		"price": 0.8700,
-		"weight": 0.0609
+		"symbol": "BRD",
+		"price": 19.1200,
+		"weight": 0.0747
 	},
 	{
-		"symbol": "AG",
-		"name": "AGROLAND BUSINESS SYSTEM",
-		"price": 1.2500,
-		"weight": 0.0443
+		"symbol": "SNN",
+		"price": 43.7000,
+		"weight": 0.0369
 	},
 	{
-		"symbol": "ELZY",
-		"name": "ELECTROPRECIZIA SA Sacele",
-		"price": 17.0000,
-		"weight": 0.0427
+		"symbol": "DIGI",
+		"price": 64.4000,
+		"weight": 0.0361
 	},
 	{
-		"symbol": "NRF",
-		"name": "NOROFERT S.A.",
-		"price": 6.0000,
-		"weight": 0.0414
+		"symbol": "EL",
+		"price": 13.3200,
+		"weight": 0.0317
 	},
 	{
-		"symbol": "DN",
-		"name": "DN Agrar Group",
-		"price": 0.7440,
-		"weight": 0.0357
+		"symbol": "TGN",
+		"price": 24.0000,
+		"weight": 0.0317
 	},
 	{
-		"symbol": "MACO",
-		"name": "MACOFIL SA TG. JIU",
-		"price": 19.0000,
-		"weight": 0.0345
+		"symbol": "M",
+		"price": 6.0300,
+		"weight": 0.0314
 	},
 	{
-		"symbol": "AST",
-		"name": "ARCTIC STREAM",
-		"price": 24.5000,
-		"weight": 0.031
-	},
-	{
-		"symbol": "GSH",
-		"name": "Grup Serban Holding",
-		"price": 1.5800,
-		"weight": 0.0286
-	},
-	{
-		"symbol": "MILK",
-		"name": "AGROSERV MARIUTA",
-		"price": 5.9000,
-		"weight": 0.0246
-	},
-	{
-		"symbol": "IPRU",
-		"name": "IPROEB SA Bistrita",
-		"price": 0.6000,
-		"weight": 0.0227
-	},
-	{
-		"symbol": "FOJE",
-		"name": "FORAJ SONDE SA VIDELE",
-		"price": 9.3000,
-		"weight": 0.0212
-	},
-	{
-		"symbol": "BENTO",
-		"name": "2B Intelligent Soft",
-		"price": 5.3000,
-		"weight": 0.0211
-	},
-	{
-		"symbol": "CODE",
-		"name": "Softbinator Technologies",
-		"price": 6.0800,
-		"weight": 0.0188
-	},
-	{
-		"symbol": "UARG",
-		"name": "ARGUS SA Constanta",
-		"price": 2.6000,
-		"weight": 0.0187
-	},
-	{
-		"symbol": "LIH",
-		"name": "LIFE IS HARD S.A.",
-		"price": 1.9250,
-		"weight": 0.0171
-	},
-	{
-		"symbol": "MAMA",
-		"name": "MAGAZIN UNIVERSAL MARAMURES SA BAIA MARE",
-		"price": 0.2700,
+		"symbol": "ONE",
+		"price": 0.4735,
 		"weight": 0.0167
 	},
 	{
-		"symbol": "HUNT",
-		"name": "IHUNT TECHNOLOGY IMPORT-EXPORT S.A.",
-		"price": 0.4120,
-		"weight": 0.0156
+		"symbol": "TEL",
+		"price": 39.3000,
+		"weight": 0.0161
 	},
 	{
-		"symbol": "CC",
-		"name": "CONNECTIONS CONSULT S.A.",
-		"price": 4.3000,
-		"weight": 0.0154
+		"symbol": "ATB",
+		"price": 3.1400,
+		"weight": 0.0148
 	},
 	{
-		"symbol": "2P",
-		"name": "2PERFORMANT NETWORK",
-		"price": 2.0400,
-		"weight": 0.0134
+		"symbol": "FP",
+		"price": 0.3138,
+		"weight": 0.0141
 	},
 	{
-		"symbol": "SPX",
-		"name": "SIPEX COMPANY",
-		"price": 0.3220,
-		"weight": 0.0129
+		"symbol": "TTS",
+		"price": 6.8100,
+		"weight": 0.012
 	},
 	{
-		"symbol": "ALW",
-		"name": "VISUAL FAN",
-		"price": 9.6400,
-		"weight": 0.0129
+		"symbol": "AQ",
+		"price": 1.3900,
+		"weight": 0.0117
 	},
 	{
-		"symbol": "ASC",
-		"name": "ASCENDIA SA",
-		"price": 3.5800,
-		"weight": 0.0127
+		"symbol": "PE",
+		"price": 19.7400,
+		"weight": 0.0104
 	},
 	{
-		"symbol": "FRB",
-		"name": "FIREBYTE GAMES",
-		"price": 0.3720,
-		"weight": 0.0082
+		"symbol": "SFG",
+		"price": 40.0000,
+		"weight": 0.0087
 	},
 	{
-		"symbol": "BONA",
-		"name": "BONAS IMPORT EXPORT",
-		"price": 1.3800,
-		"weight": 0.0082
+		"symbol": "TRP",
+		"price": 0.4575,
+		"weight": 0.0084
 	},
 	{
-		"symbol": "CLAIM",
-		"name": "AIR CLAIM",
-		"price": 4.7800,
-		"weight": 0.0063
-	},
-	{
-		"symbol": "REIT",
-		"name": "Star Residence Invest",
-		"price": 0.1610,
-		"weight": 0.0062
-	},
-	{
-		"symbol": "AAB",
-		"name": "AGROLAND AGRIBUSINESS",
-		"price": 5.2500,
-		"weight": 0.006
-	},
-	{
-		"symbol": "MAM",
-		"name": "MAMBRICOLAJ S.A.",
-		"price": 2.8500,
-		"weight": 0.0049
-	},
-	{
-		"symbol": "ADISS",
-		"name": "ADISS",
-		"price": 0.7400,
-		"weight": 0.0038
-	},
-	{
-		"symbol": "CHRD",
-		"name": "CHROMOSOME DYNAMICS",
-		"price": 20.0000,
-		"weight": 0.0037
-	},
-	{
-		"symbol": "BIOW",
-		"name": "VIFRANA",
-		"price": 0.1570,
-		"weight": 0.0032
+		"symbol": "WINE",
+		"price": 14.8800,
+		"weight": 0.0076
 	}
 ]

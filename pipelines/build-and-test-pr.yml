@@ -3,7 +3,7 @@ name: ci_$(SourceBranchName).$(rev:r)
 trigger: none
 
 pr:
-- master
+- main
 
 pool:
   vmImage: ubuntu-latest

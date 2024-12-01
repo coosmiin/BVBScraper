@@ -9,7 +9,7 @@ namespace Trading.Functions.Advisor
 {
 	public static class TradeAdvisorFunctions
 	{
-		private const int MIN_ORDER_VALUE = 250;
+		private const int MIN_ORDER_VALUE = 175;
 
 		[FunctionName(nameof(CalculateToBuyStocks))]
 		public static IActionResult CalculateToBuyStocks(
